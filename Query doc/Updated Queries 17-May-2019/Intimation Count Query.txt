@@ -1,0 +1,20 @@
+--Intimation Count 16-May-2018 And 15-May-2019
+SELECT
+    pdp_dept_code,
+    COUNT(gih_documentno)
+FROM
+    hil.gi_gc_ih_intimationhd
+WHERE
+        gih_intimationdate BETWEEN '16-May-2018' AND '15-MAY-2019'
+    AND
+        gih_inti_entryno = '1'
+    AND
+        gih_postingtag = 'Y'
+    AND
+        gih_cancellationtag IS NULL
+GROUP BY
+    pdp_dept_code
+ORDER BY pdp_dept_code;
+
+
+-----------------------------------------------------------------------------------

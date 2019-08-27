@@ -1,0 +1,34 @@
+--Branch & Month wise
+select plc_loc_code,plc_desc,pdp_dept_code,dept,YR,MT,sum(doc_ref_curr),sum(doc_ref_prev),sum(suminsured_curr),sum(suminsured_prev),sum(curr_grosspremium),sum(prev_grosspremium)
+from (
+select  
+ a.plc_loc_code,
+case when a.plc_loc_Code='60101' then 'Head Office' else 
+case when a.plc_loc_Code='30107' then 'Multan Trust Plaza' else
+case when a.client_code='1300019811' then 'C.B.D' else 
+case when a.plc_loc_Code in (select TAKAFULCODE from HICL_BRANCHMAP)  then (select branchname from HICL_BRANCHMAP where takafulcode=a.plc_loc_code) else
+lc.plc_desc END end end end plc_desc,a.pdp_dept_code, 
+case when dp.pdp_desc='Health' then 'Miscellaneous' else 
+    case when a.plc_loc_Code in (select TAKAFULCODE from HICL_BRANCHMAP)  then 'Takaful' else
+        case when a.client_code='1300019811' then 'Motor' else
+            case when dp.pdp_desc='Terrorism' then 'Fire' else  dp.pdp_desc end
+end end end dept,year(a.issuedate) yr,month(a.issuedate) mt,
+case when year(a.issuedate)='2018' then count(docrefno) else 0 end as doc_ref_curr,
+case when year(a.issuedate)='2018'-1 then count(docrefno) else 0 end as doc_ref_prev, 
+case when year(a.issuedate)='2018' then sum(coalesce(a.suminsured,0)) else 0 end as suminsured_curr,
+case when year(a.issuedate)='2018'-1 then sum(coalesce(a.suminsured,0)) else 0 end as  suminsured_prev, 
+case when year(a.issuedate)='2018' then sum(coalesce(a.grossprem,0))+sum(coalesce(a.admin,0)) else 0 end as curr_grosspremium,
+case when year(a.issuedate)='2018'-1 then sum(coalesce(a.grossprem,0))+sum(coalesce(a.admin,0)) else 0 end as  prev_grosspremium
+from premium_view a 
+left outer join pr_gn_lc_location lc on (a.plc_loc_code=lc.plc_loc_code)
+left outer join pr_gn_dp_department dp on (dp.pdp_dept_code=a.pdp_dept_code and dp.plc_loc_code=a.plc_loc_code)
+left outer join pr_gn_ps_party pp on (a.client_code=pp.pps_party_code)
+where year(a.issuedate) <='2018' and year(a.issuedate) >= '2018'-1
+AND month(a.issuedate) between '01' and '12'
+and A.PDP_DEPT_CODE between '01' and '99' 
+and A.PLC_LOC_CODE between '00001' and '99999' 
+and a.pdt_doctype IN ('O','E','P')
+group by a.plc_loc_code,lc.plc_desc,a.pdp_dept_code,client_code, dp.pdp_desc,year(a.issuedate),month(a.issuedate) )
+group by plc_loc_code,plc_desc,pdp_dept_code,dept,YR,MT
+order by plc_loc_code,plc_desc,pdp_dept_code,dept,YR,MT
+;

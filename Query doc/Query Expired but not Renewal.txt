@@ -1,0 +1,23 @@
+
+--Expired but not Renewal 
+
+SELECT 
+pps_desc,PLC_LOCADESC,PDP_DEPTDESC,
+COUNT(G.GDH_DOCUMENTNO) DOCCOUNT,
+   SUM(G.GDH_TOTALSI) SI, 
+   SUM(G.GDH_GROSSPREMIUM) GP
+FROM HIL.GI_GU_DH_DOC_HEADER G
+left outer join pr_gn_lc_location lc on (G.plc_loc_code=lc.plc_loc_code)
+left outer join pr_gn_dp_department dp on (dp.pdp_dept_code=G.pdp_dept_code and dp.plc_loc_code=G.plc_loc_code)
+left outer join pr_gn_ps_party pp on (g.PPS_PARTY_CODE=pp.pps_party_code)
+Where
+g.GDH_RENEWAL_TAG is null
+and g.PDP_DEPT_CODE not in ('12')
+ --AND GDH_YEAR = '2018'
+ AND g.PDT_DOCTYPE     in ('P')
+ AND g.GDH_RECORD_TYPE    = 'O'
+ AND g.GDH_CANCELLATION_TAG   is null
+ AND g.gdh_expirydate between '01-jan-2018' and '31-dec-2018'
+ group by pps_desc,PLC_LOCADESC,PDP_DEPTDESC;
+
+--ORDER BY POR_ORG_CODE, PLC_LOC_CODE, PDP_DEPT_CODE, PBC_BUSICLASS_CODE, PIY_INSUTYPE, PDT_DOCTYPE, GDH_DOCUMENTNO, GDH_RECORD_TYPE, GDH_YEAR

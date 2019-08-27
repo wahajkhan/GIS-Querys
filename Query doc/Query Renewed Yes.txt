@@ -1,0 +1,26 @@
+--Renewed Yes 
+
+SELECT 
+--COUNT(G.GDH_DOCUMENTNO) DOCCOUNT,
+--   SUM(G.GDH_TOTALSI) SI, 
+--   SUM(G.GDH_GROSSPREMIUM) GP
+pps_desc,pps_desc,PLC_LOCADESC,PDP_DEPTDESC,
+COUNT(G.GDH_DOCUMENTNO) DOCCOUNT,
+   SUM(G.GDH_TOTALSI) SI, 
+   SUM(G.GDH_GROSSPREMIUM) GP
+
+FROM HIL.GI_GU_DH_DOC_HEADER G
+left outer join pr_gn_lc_location lc on (G.plc_loc_code=lc.plc_loc_code)
+left outer join pr_gn_dp_department dp on (dp.pdp_dept_code=G.pdp_dept_code and dp.plc_loc_code=G.plc_loc_code)
+left outer join pr_gn_ps_party pp on (g.PPS_PARTY_CODE=pp.pps_party_code)
+Where
+GDH_RENEWAL_TAG = 'Y'
+ --AND GDH_YEAR = '2018'
+ AND PDT_DOCTYPE     in ('P','O')
+ AND GDH_RECORD_TYPE    = 'O'
+ AND GDH_CANCELLATION_TAG   is null
+ AND gdh_expirydate between '01-jan-2018' and '31-dec-2018'
+ group by pps_desc,PLC_LOCADESC,PDP_DEPTDESC;
+--ORDER BY g.POR_ORG_CODE, g.PLC_LOC_CODE, g.PDP_DEPT_CODE, g.PBC_BUSICLASS_CODE, g.PIY_INSUTYPE, g.PDT_DOCTYPE, g.GDH_DOCUMENTNO, g.GDH_RECORD_TYPE, g.GDH_YEAR
+
+;

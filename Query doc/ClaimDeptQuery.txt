@@ -1,0 +1,27 @@
+select distinct count(cu.CLAIMIDX) as Total_ClaimsProcessedCMS,cu.statusidx
+from  hicl_claim_update cu
+where to_char(TO_DATE(DATETIME,'DD-MON-YYYY hh24:mi:ss'),'DD-MON-YYYY')  between  
+TO_DATE(crFromDate,'DD-MON-YYYY hh24:mi:ss') and TO_DATE(crToDate,'DD-MON-YYYY hh24:mi:ss') AND
+ (statusidx<50 or statusidx=100 or statusidx=125)
+group by cu.statusidx;
+
+
+
+
+
+
+
+select CR_ID,USERID,CR.INTIMATIONNO,nvl(cu.STATUSIDX,0) STATUSIDX,
+to_date(CR.CR_DATE,'dd-MON-yyyy hh24:mi:ss')CRDate,
+
+to_date(SA.SURVEYORAPPOINTDATE,'YYYY-MON-DD hh24:mi:ss')SURDAte,
+ROUND(to_char(nvl((to_date(SA.SURVEYORAPPOINTDATE,'YYYY-MON-DD hh24:mi:ss')-to_date(CR.CR_DATE,'dd-MON-yyyy hh24:mi:ss'))*(24*60),0))) as Min_Diff 
+--, nvl(to_date(datetime,'dd-MON-yyyy hh24:mi:ss'), '') DateTIme
+from HICL_CHANGEREQUEST CR 
+
+left outer join hicl_claim_update cu on cu.CLAIMIDX=CR.INTIMATIONNO
+left outer join HICL_SA_SURVEYORAPPOINT SA on SA.LOSSNO=CR.CR_ID
+where CR_ID like 'CI%'  AND
+  to_char(TO_DATE(CR.CR_DATE,'DD-MON-YYYY hh24:mi:ss'),'DD-MON-YYYY') 
+ between  to_date(crFromDate) and to_date(crToDate)
+order by  CR_ID  asc;

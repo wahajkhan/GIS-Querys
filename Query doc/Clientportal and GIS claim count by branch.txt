@@ -1,0 +1,19 @@
+
+
+
+select Ab.locations ,Ab.ClaimCountClientPortal, B.ClaimCountGIS  from (
+select distinct LC.PLC_LOCADESC as locations,count(CR_ID) as ClaimCountClientPortal--Branch_Wise_Claims_Intimate
+from hicl_changerequest CR
+left outer join PR_GN_LC_LOCATION LC on LC.PLC_LOCACODE=CR.LOC_CODE
+inner  join  HICL_USERs SU on Upper(CR.USERID)=Upper(SU.USERID)
+
+where to_char(TO_DATE(CR_DATE, 'DD-MON-YYYY hh24:mi:ss'),'DD-MON-YYYY') between TO_DATE('01-JAN-2019') and TO_DATE('22-Apr-2019')
+    AND    CR.BUSINESS_CLASS='NonCBD'  
+        and 
+         CR.CR_ID like 'CI%'
+          group by LC.PLC_LOCADESC,CR.LOC_CODE) Ab left outer join   
+(SELECT LOC.PLC_DESC as locations ,count(G.GIH_DOC_REF_NO) as ClaimCountGIS
+ FROM GI_GC_IH_INTIMATIONHD  G 
+        LEFT OUTER JOIN PR_GN_LC_LOCATION LOC ON LOC.PLC_LOC_CODE=G.PLC_LOC_CODE 
+         where G.GIH_INTIMATIONDATE between TO_DATE('01-JAN-2019') and TO_DATE('22-Apr-2019')
+        group by LOC.PLC_DESC ) B on ab.locations=B.locations ;

@@ -1,0 +1,30 @@
+
+--Make Modal Motor Client Wise
+SELECT 
+--G.GDH_DOC_REFERENCE_NO, 
+count(a.pmk_make_Code)
+FROM HIL.GI_GU_DH_DOC_HEADER G
+left outer join GI_GU_ID_ITEM_DETAIL A 
+          ON (    G.por_org_code = a.por_org_code
+              AND G.plc_loc_code = a.plc_loc_code
+              AND G.pdp_dept_code = a.pdp_dept_code
+              AND G.pbc_busiclass_code = a.pbc_busiclass_code
+              AND G.piy_insutype = a.piy_insutype
+              AND G.pdt_doctype = a.pdt_doctype
+              AND G.gdh_documentno = a.gdh_documentno
+              AND G.gdh_record_type = a.gdh_record_type
+              AND G.gdh_year = a.gdh_year
+             )
+Where
+--G.GDH_YEAR = '2018'
+  G.PDT_DOCTYPE in ('P')
+ AND G.GDH_ISSUEDATE BETWEEN '01-nov-2017' AND '31-DEC-2018'
+ AND G.GDH_RECORD_TYPE = 'O'
+ AND G.GDH_POSTING_TAG = 'Y'
+ AND G.GDH_CANCELLATION_TAG IS NULL
+and g.pdp_dept_Code=13
+AND G.PIY_INSUTYPE IN ('O','D')
+and PPS_PARTY_CODE in ('1300019811','1300020912','1300020782')
+and a.pmk_make_Code in  (select pmk_make_Code from PR_GT_MK_MAKE mk where UPPER(PMK_DESC) LIKE 'TOYOTA%' ) 
+; 
+

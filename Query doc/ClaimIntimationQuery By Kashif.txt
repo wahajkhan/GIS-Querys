@@ -1,0 +1,73 @@
+
+ 1: user wise Claim Intimation
+
+
+
+select distinct CR.USERID,count(CR_ID) as Total_Claims_Intimate from hicl_changerequest CR
+left outer join PR_GN_LC_LOCATION LC on LC.PLC_LOCACODE=CR.LOC_CODE
+inner  join  HICL_USERs SU on Upper(CR.USERID)=Upper(SU.USERID)
+
+where NVL(SUBSTR(CR_Date, 0, INSTR(CR_Date, ' ')-1), CR_Date)= to_char(SYSDATE,'dd-Mon-yyyy')
+ and CR.BUSINESS_CLASS='CBD' 
+  and CR.CR_ID like 'CI%'
+  
+  group by CR.USERID;
+  
+  
+  
+  
+  
+  2: Branch Wise Claim Intimation
+  
+  
+select distinct LC.PLC_LOCADESC,count(CR_ID) as Branch_Wise_Claims_Intimate from hicl_changerequest CR
+inner join PR_GN_LC_LOCATION LC on LC.PLC_LOCACODE=CR.LOC_CODE
+inner  join  HICL_USERs SU on Upper(CR.USERID)=Upper(SU.USERID)
+
+where NVL(SUBSTR(CR_Date, 0, INSTR(CR_Date, ' ')-1), CR_Date)= to_char(SYSDATE,'dd-Mon-yyyy') and 
+ 
+ 
+ CR.BUSINESS_CLASS='CBD' 
+  and CR.CR_ID like 'CI%'
+  
+  group by LC.PLC_LOCADESC,CR.LOC_CODE;
+  
+  
+  
+  
+  
+  
+  
+  
+  3: Total_Claims_Intimate ToDay 
+  
+    
+select distinct count(CR_ID) as Total_Claims_Intimate_Today 
+
+from hicl_changerequest CR
+left outer join PR_GN_LC_LOCATION LC on LC.PLC_LOCACODE=CR.LOC_CODE
+inner  join  HICL_USERs SU on Upper(CR.USERID)=Upper(SU.USERID)
+
+where NVL(SUBSTR(CR_Date, 0, INSTR(CR_Date, ' ')-1), CR_Date)= to_char(SYSDATE,'dd-Mon-yyyy')
+ --and CR.BUSINESS_CLASS='CBD' 
+  and CR.CR_ID like 'CI%'
+  
+  
+  
+  
+  4: Surveyor Appoint Time Summary
+  
+  
+  select distinct CR.CR_ID,CR.USERID,CR.CR_DATE,SA.SURVEYORAPPOINTDATE,SA.userid as Surv_Appoint_user,CR.DOCUMENT_NO,SS.STATUS,
+
+ROUND(to_char(nvl((to_date(SA.SURVEYORAPPOINTDATE,'YYYY-MON-DD hh24:mi:ss')-to_date(CR.CR_DATE,'dd-MON-yyyy hh24:mi:ss'))*(24*60),0))) as Min_Diff 
+
+ from hicl_changerequest CR
+left outer join PR_GN_LC_LOCATION LC on LC.PLC_LOCACODE=CR.LOC_CODE
+left outer join HICL_SA_SURVEYORAPPOINT SA on SA.LOSSNO=CR.CR_ID and CR.year=SA.year and CR.BUSINESS_CLASS=SA.BUSSNIESS_CLASS
+inner  join  HICL_USERs SU on Upper(CR.USERID)=Upper(SU.USERID)
+left outer join HICL_SURVEYORSTATUS SS on SS.STATUSIDX=CR.STATUS
+where NVL(SUBSTR(CR_Date, 0, INSTR(CR_Date, ' ')-1), CR_Date)= to_char(SYSDATE,'dd-Mon-yyyy')
+ and CR.BUSINESS_CLASS='CBD' 
+  and CR.CR_ID like 'CI%'
+ 

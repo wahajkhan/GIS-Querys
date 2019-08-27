@@ -1,0 +1,1962 @@
+{
+	"id": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+	"name": "Surveyor App Mobile App Api",
+	"description": "Surveyor Mobile App Api With the following End-points\n\n",
+	"order": [],
+	"folders": [
+		{
+			"name": "FireBase API",
+			"description": "Firebase API Database End point With Example and Tested Data",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"order": [
+				"80bf4354-676a-a129-3bd2-696139574e18",
+				"09aee695-dd7c-48bb-4b48-02223fed0fa2",
+				"1df2dc52-8dd9-a62a-4931-e1cef52ffc62",
+				"32256df3-a06e-b60b-a824-a63be4494a0b"
+			],
+			"owner": "5332210",
+			"folder": "4f30956b-e073-ac84-f2be-2abe43d258bf",
+			"folders_order": [],
+			"id": "1e7d28ae-3d0a-489a-980e-4de4fdb34fa7"
+		},
+		{
+			"name": "Live URL Request",
+			"description": "Live Url Request , Dummy data for request , Result of this request",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"order": [
+				"2a645a61-6265-cacd-0b1f-6138232d951c",
+				"5cea7726-1993-c251-9358-e3681bc14407",
+				"2ed4c379-7962-3579-07ac-830ea2c0dfbe",
+				"fbebdfdc-82a5-2d79-7b96-8c0790144488",
+				"56b80772-10ea-2421-194a-7a970678efa7",
+				"2c1b01e2-8963-ab43-b47f-ed48779e9d49"
+			],
+			"owner": "5332210",
+			"folders_order": [],
+			"id": "ced81837-1271-8fce-207f-73019cd159c1"
+		},
+		{
+			"name": "Local URL Request",
+			"description": "Local Url Request , Dummy data for request , Result of this request",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"order": [],
+			"owner": "5332210",
+			"folders_order": [
+				"7d647987-dbb8-74df-3118-6f7e6e5f95ec",
+				"1e7d28ae-3d0a-489a-980e-4de4fdb34fa7"
+			],
+			"id": "4f30956b-e073-ac84-f2be-2abe43d258bf"
+		},
+		{
+			"name": "Loss Steps",
+			"description": "",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"order": [
+				"c13f1cf7-0305-8f02-18e2-efe531c4f206",
+				"558d69b4-51f9-af6a-fa96-bc09bef45219",
+				"ea828e16-cb65-34c9-0c20-6e2027f34e3c",
+				"c115d03c-c130-ef37-959b-d0b6fafd7831",
+				"e3fda277-c22a-f79b-3100-5e7cd04b762b",
+				"b46e95cc-8b44-89ff-9de3-abf8a1155363"
+			],
+			"owner": "5332210",
+			"folder": "4f30956b-e073-ac84-f2be-2abe43d258bf",
+			"folders_order": [],
+			"id": "7d647987-dbb8-74df-3118-6f7e6e5f95ec"
+		}
+	],
+	"folders_order": [
+		"4f30956b-e073-ac84-f2be-2abe43d258bf",
+		"ced81837-1271-8fce-207f-73019cd159c1"
+	],
+	"timestamp": 1561454836654,
+	"owner": "5332210",
+	"public": false,
+	"requests": [
+		{
+			"id": "09aee695-dd7c-48bb-4b48-02223fed0fa2",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:64487/api/addUser",
+			"folder": "1e7d28ae-3d0a-489a-980e-4de4fdb34fa7",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1561461417920,
+			"name": "Firebase API End point Add Surveyor Portal User",
+			"description": "Firebase API End point Add Surveyor Portal User. this API is host with Surveyor App Portal",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": 19441,
+					"headers": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "55",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 25 Jun 2019 10:48:29 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "expires",
+							"key": "expires",
+							"value": "-1",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"name": "pragma",
+							"key": "pragma",
+							"value": "no-cache",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "Microsoft-IIS/10.0",
+							"description": "A name for the server"
+						},
+						{
+							"name": "x-aspnet-version",
+							"key": "x-aspnet-version",
+							"value": "4.0.30319",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "ASP.NET",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						},
+						{
+							"name": "x-sourcefiles",
+							"key": "x-sourcefiles",
+							"value": "=?UTF-8?B?RTpcRGF0YVxHaXQgcmVwb3NccG9ydGFsSGFiaWJJbnN1cmFuY2VcZ2l0aHViXGhpY2xfd2ViXGFwaVxhZGRVc2Vy?=",
+							"description": "Custom header"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"status\":\"200 OK\",\"message\":\"user added sucessfully.\"}",
+					"language": "json",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Firebase API End point Add Surveyor Portal User example",
+					"id": "ae5a5da9-c95a-898e-2fdc-21c4fa93604f",
+					"isSample": true,
+					"scrollToResult": false,
+					"runTests": false,
+					"request": {
+						"url": "http://localhost:64487/api/addUser",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": ""
+							}
+						],
+						"headers": "Content-Type: application/json\n",
+						"data": "{\n\t\"companyID\": \"0057000\",\n\t\"companyName\":\"Clamix\",\n\t\"contactNo\": \"0333333839480\",\n\t\"email\": \"clamix1@gmail.com\",\n\t\"password\":\"1111\",\n\t\"username\":\"clamix\",\n\t\"type\": \"admin\"\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			]
+		},
+		{
+			"id": "1df2dc52-8dd9-a62a-4931-e1cef52ffc62",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:64487/api/addClaimDetails",
+			"folder": "1e7d28ae-3d0a-489a-980e-4de4fdb34fa7",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1561460054182,
+			"name": "Firebase API End point Add Claim",
+			"description": "Firebase API End point Add Claim. this API is host with Surveyor App Portal",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 1801,
+					"headers": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "43",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 25 Jun 2019 10:52:00 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "expires",
+							"key": "expires",
+							"value": "-1",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"name": "pragma",
+							"key": "pragma",
+							"value": "no-cache",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "Microsoft-IIS/10.0",
+							"description": "A name for the server"
+						},
+						{
+							"name": "x-aspnet-version",
+							"key": "x-aspnet-version",
+							"value": "4.0.30319",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "ASP.NET",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						},
+						{
+							"name": "x-sourcefiles",
+							"key": "x-sourcefiles",
+							"value": "=?UTF-8?B?RTpcRGF0YVxHaXQgcmVwb3NccG9ydGFsSGFiaWJJbnN1cmFuY2VcZ2l0aHViXGhpY2xfd2ViXGFwaVxhZGRDbGFpbURldGFpbHM=?=",
+							"description": "Custom header"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"StatusCode\":200,\"StatusDescription\":null}",
+					"language": "json",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Firebase API End point Add Claim",
+					"id": "670ca4af-867f-f46e-0b5d-9eca23092c2b",
+					"request": {
+						"url": "http://localhost:64487/api/addClaimDetails",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headers": "Content-Type: application/json\n",
+						"data": "{\n\"AdditionalRemarks\": \"LOSS # CBD-2018/3001\",\n\"CarRepairLocationCityCode\": \"karachi\",\n\"ContactPerson\": \"wahaj\",\n\"ContactPersonNo\": \"03343035878\",\n\"IntimationNoCMS\": \"HICL3001\",\n\"IntimationNoGIS\": \"HICL3001\",\n\"PolicyAttachment\": \"PDF Document\",\n\"PolicyNo\": \"2018/08/CBDVPCDP05301\",\n\"PreferedWorksshop\": \"Karachi Autos\",\n\"ReportedDate\": \"31-Jan-2019 13:00:00\",\n\"ReportedUserHICL\": \"Ali\",\n\"SurveyorCityCode\": \"01985\",\n\"SurveyorCode\": \"0057000\"\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			]
+		},
+		{
+			"id": "2a645a61-6265-cacd-0b1f-6138232d951c",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://103.205.177.141:8889/SurveyorApp/api/Surveyor/InsertStep1Loss ",
+			"folder": "4f30956b-e073-ac84-f2be-2abe43d258bf",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1561456263844,
+			"name": "Surveyor App Api End Point Step 1 Loss",
+			"description": "Surveyor App Api End Point Step 1 Loss",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": 0,
+					"headers": [],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "",
+					"rawDataType": "",
+					"previewType": "parsed",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"id": "0ffa121e-1cfd-c6ff-dc1c-a2a8e7f9f1ca",
+					"name": "Surveyor App Api End Point Step 1 Loss",
+					"isSample": true,
+					"scrollToResult": false,
+					"runTests": false,
+					"request": {
+						"url": "http://103.205.177.141:8889/SurveyorApp/api/Surveyor/InsertStep1Loss ",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"enabled": true,
+								"description": ""
+							}
+						],
+						"headers": "Content-Type: application/json\n",
+						"data": "{ \n\t\"LossNo\" : \"HICL3008\",  \n\t\"Step1\" :\n\t{   \n\t\t\"Loss\" : 1 \n\t}  \n\t\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{ \n\t\"LossNo\" : \"HICL3008\",  \n\t\"Step1\" :\n\t{   \n\t\t\"Loss\" : 1 \n\t}  \n\t\n}"
+		},
+		{
+			"id": "2c1b01e2-8963-ab43-b47f-ed48779e9d49",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": " http://103.205.177.141:8889/SurveyorApp/api/Surveyor/InsertStep6Loss ",
+			"folder": "4f30956b-e073-ac84-f2be-2abe43d258bf",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1561462120568,
+			"name": "Surveyor App Api End Point Step 6 Loss",
+			"description": "Surveyor App Api End Point Step 6",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 176,
+					"headers": [
+						{
+							"name": "access-control-allow-headers",
+							"key": "access-control-allow-headers",
+							"value": "Content-Type",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "access-control-allow-methods",
+							"key": "access-control-allow-methods",
+							"value": "GET, POST, PUT, DELETE, OPTIONS",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "0",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 25 Jun 2019 09:43:41 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "expires",
+							"key": "expires",
+							"value": "-1",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"name": "pragma",
+							"key": "pragma",
+							"value": "no-cache",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "Microsoft-IIS/8.5",
+							"description": "A name for the server"
+						},
+						{
+							"name": "x-aspnet-version",
+							"key": "x-aspnet-version",
+							"value": "4.0.30319",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "ASP.NET",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "plainText",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Surveyor App Api End Point Step 6",
+					"id": "2fc3d847-5931-c9ee-c085-367800b4c86a",
+					"request": "2c1b01e2-8963-ab43-b47f-ed48779e9d49",
+					"requestObject": {
+						"url": " http://192.168.21.2:8889/SurveyorApp/api/Surveyor/InsertStep6Loss ",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headers": "Content-Type: application/json\n",
+						"data": "{  \r\n   \"LossNo\":\"CI-23\",\r\n   \"Step6\":{  \r\n      \"finalInvoiceUrls\":[  \r\n         \"www.test1.comcomupde\",\r\n         \"www.test1.comupd\"\r\n      ],\r\n      \"satisfactionNote\":\"note here\",\r\n      \"reinspectionPhotoUrls\":[  \r\n         \"www.test1.comcomupdate\",\r\n         \"www.test1.comcomupdate\"\r\n      ],\r\n      \"claimFormUrls\":[  \r\n         \"www.test1.comcomupdate\",\r\n         \"www.test1.comcomupdate\"\r\n      ],\r\n      \"satisfactionNoteUrls\":[  \r\n         \"www.test1.comcomupdate\",\r\n         \"www.test1.comcomupdate\"\r\n      ]\r\n   }\r\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{  \r\n   \"LossNo\":\"CI-1013\",\r\n   \"Step6\":{  \r\n      \"finalInvoiceUrls\":[  \r\n         \"www.test1.comcomupde\",\r\n         \"www.test1.comupd\"\r\n      ],\r\n      \"satisfactionNote\":\"note here\",\r\n      \"einspectionPhotoUrls\":[  \r\n         \"www.test1.comcomupdate\",\r\n         \"www.test1.comcomupdate\"\r\n      ],\r\n      \"claimFormUrls\":[  \r\n         \"www.test1.comcomupdate\",\r\n         \"www.test1.comcomupdate\"\r\n      ],\r\n      \"satisfactionNoteUrls\":[  \r\n         \"www.test1.comcomupdate\",\r\n         \"www.test1.comcomupdate\"\r\n      ]\r\n   }\r\n}"
+		},
+		{
+			"id": "2ed4c379-7962-3579-07ac-830ea2c0dfbe",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": " http://103.205.177.141:8889/SurveyorApp/api/Surveyor/InsertStep3Loss ",
+			"folder": "4f30956b-e073-ac84-f2be-2abe43d258bf",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1561456407454,
+			"name": "Surveyor App Api End Point Step 3 Loss",
+			"description": "Surveyor App Api End Point Step 3 Loss",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": 0,
+					"headers": [],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "",
+					"rawDataType": "",
+					"previewType": "parsed",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Surveyor App Api End Point Step 3 Loss",
+					"id": "616c0161-c160-85e1-85de-bbcc2278e738",
+					"request": {
+						"url": " http://103.205.177.141:8889/SurveyorApp/api/Surveyor/InsertStep3Loss ",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headers": "Content-Type: application/json\n",
+						"data": "{  \r\n   \"LossNo\":\"CI-1013\",\r\n   \"Step3\":{  \r\n      \"damagedPhotos\":[  \r\n         {  \r\n            \"chasisAndEngineNoUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"meterReadingUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"numberPlateUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"othersDamagedPhotosUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"seatBeltUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"tikliUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         }\r\n      ],\r\n      \"damagedAreas\":[  \r\n         true,\r\n         false,\r\n         true,\r\n         false,\r\n         true,\r\n         false,\r\n         false,\r\n         false,\r\n         true,\r\n         false,\r\n         true,\r\n         false,\r\n         true,\r\n         false\r\n      ]\r\n   }\r\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{  \r\n   \"LossNo\":\"CI-1013\",\r\n   \"Step3\":{  \r\n      \"damagedPhotos\":[  \r\n         {  \r\n            \"chasisAndEngineNoUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"meterReadingUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"numberPlateUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"othersDamagedPhotosUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"seatBeltUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"tikliUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         }\r\n      ],\r\n      \"damagedAreas\":[  \r\n         true,\r\n         false,\r\n         true,\r\n         false,\r\n         true,\r\n         false,\r\n         false,\r\n         false,\r\n         true,\r\n         false,\r\n         true,\r\n         false,\r\n         true,\r\n         false\r\n      ]\r\n   }\r\n}"
+		},
+		{
+			"id": "32256df3-a06e-b60b-a824-a63be4494a0b",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:64487/api/ApproveEstimate",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Firebase API End point Approved Estimate , Reinspection",
+			"description": "Firebase API End point Approved Estimate , Resinpection . this API is host with Surveyor App Portal",
+			"descriptionFormat": "html",
+			"time": 1561461333125,
+			"version": 2,
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 2409,
+					"headers": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "0",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 25 Jun 2019 11:14:49 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "expires",
+							"key": "expires",
+							"value": "-1",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"name": "pragma",
+							"key": "pragma",
+							"value": "no-cache",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "Microsoft-IIS/10.0",
+							"description": "A name for the server"
+						},
+						{
+							"name": "x-aspnet-version",
+							"key": "x-aspnet-version",
+							"value": "4.0.30319",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "ASP.NET",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						},
+						{
+							"name": "x-sourcefiles",
+							"key": "x-sourcefiles",
+							"value": "=?UTF-8?B?RTpcRGF0YVxHaXQgcmVwb3NccG9ydGFsSGFiaWJJbnN1cmFuY2VcZ2l0aHViXGhpY2xfd2ViXGFwaVxBcHByb3ZlRXN0aW1hdGU=?=",
+							"description": "Custom header"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "plainText",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Firebase API End point Approved Estimate , Reinspection",
+					"id": "8f9d1238-fc01-12b2-4606-f2e02d431ce0",
+					"request": {
+						"url": "http://localhost:64487/api/ApproveEstimate",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headers": "Content-Type: application/json\n",
+						"data": "{\n\t\"claimId\" : \"HICL3000\",\n\t\"surveyorCode\" : \"123321\",\n\t\"reInspectionEnabled\" : true\n}\n",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "1e7d28ae-3d0a-489a-980e-4de4fdb34fa7",
+			"rawModeData": "{\n\t\"claimId\" : \"HICL3000\",\n\t\"surveyorCode\" : \"123321\",\n\t\"reInspectionEnabled\" : true\n}\n"
+		},
+		{
+			"id": "558d69b4-51f9-af6a-fa96-bc09bef45219",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": " http://192.168.21.2:8889/SurveyorApp/api/Surveyor/InsertStep2Loss ",
+			"folder": "7d647987-dbb8-74df-3118-6f7e6e5f95ec",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1561461809065,
+			"name": "Surveyor App Api End Point  Step 2 Loss",
+			"description": "Surveyor App Api End Point  Step 2 Loss",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 165,
+					"headers": [
+						{
+							"name": "access-control-allow-headers",
+							"key": "access-control-allow-headers",
+							"value": "Content-Type",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "access-control-allow-methods",
+							"key": "access-control-allow-methods",
+							"value": "GET, POST, PUT, DELETE, OPTIONS",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "0",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 25 Jun 2019 09:33:25 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "expires",
+							"key": "expires",
+							"value": "-1",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"name": "pragma",
+							"key": "pragma",
+							"value": "no-cache",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "Microsoft-IIS/8.5",
+							"description": "A name for the server"
+						},
+						{
+							"name": "x-aspnet-version",
+							"key": "x-aspnet-version",
+							"value": "4.0.30319",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "ASP.NET",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "plainText",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Surveyor App Api End Point  Step 2 Loss",
+					"id": "e4d59929-f0d6-fc78-ae7d-53f62ae7dc16",
+					"request": {
+						"url": "Surveyor App Api End Point  Step 2 Loss",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headers": "Content-Type: application/json\n",
+						"data": "{  \r\n   \"LossNo\":\"HICL3000\",\r\n   \"Step2\":{  \r\n      \"drivingLicenseUrls\":[  \r\n         \"www.test1.com\",\r\n         \"www.test2.com\"\r\n      ],\r\n      \"description\":\"Step 2 loss\",\r\n      \"policeReportUrls\":[  \r\n         \"www.test1.com\",\r\n         \"www.test2.com\"\r\n      ],\r\n      \"registrationBookUrls\":[  \r\n         \"www.test1.com\",\r\n         \"www.test2.com\"\r\n      ]\r\n   }\r\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{  \r\n   \"LossNo\":\"HICL3000\",\r\n   \"Step2\":{  \r\n      \"drivingLicenseUrls\":[  \r\n         \"www.test1.com\",\r\n         \"www.test2.com\"\r\n      ],\r\n      \"description\":\"Step 2 loss\",\r\n      \"policeReportUrls\":[  \r\n         \"www.test1.com\",\r\n         \"www.test2.com\"\r\n      ],\r\n      \"registrationBookUrls\":[  \r\n         \"www.test1.com\",\r\n         \"www.test2.com\"\r\n      ]\r\n   }\r\n}"
+		},
+		{
+			"id": "56b80772-10ea-2421-194a-7a970678efa7",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": " http://103.205.177.141:8889/SurveyorApp/api/Surveyor/InsertStep5Loss ",
+			"folder": "4f30956b-e073-ac84-f2be-2abe43d258bf",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1561456495927,
+			"name": "Sureveyor App Api End Point Step 5 Loss",
+			"description": "Sureveyor App Api End Point Step 5",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 57,
+					"headers": [
+						{
+							"name": "access-control-allow-headers",
+							"key": "access-control-allow-headers",
+							"value": "Content-Type",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "access-control-allow-methods",
+							"key": "access-control-allow-methods",
+							"value": "GET, POST, PUT, DELETE, OPTIONS",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "0",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 25 Jun 2019 09:42:29 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "expires",
+							"key": "expires",
+							"value": "-1",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"name": "pragma",
+							"key": "pragma",
+							"value": "no-cache",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "Microsoft-IIS/8.5",
+							"description": "A name for the server"
+						},
+						{
+							"name": "x-aspnet-version",
+							"key": "x-aspnet-version",
+							"value": "4.0.30319",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "ASP.NET",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "plainText",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Sureveyor App Api End Point Step 5 ",
+					"id": "4dcff4a2-6608-e4bd-039c-cda07b49cda7",
+					"request": "56b80772-10ea-2421-194a-7a970678efa7",
+					"requestObject": {
+						"url": " http://192.168.21.2:8889/SurveyorApp/api/Surveyor/InsertStep5Loss ",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headers": "Content-Type: application/json\n",
+						"data": "{  \r\n   \"LossNo\":\"CI-1013\",\r\n   \"Step5\":{  \r\n      \"deductible\":2500,\r\n      \"depreciation\":\"25%\",\r\n      \"salvage\":2500,\r\n      \"sdParts\":{  \r\n         \"CoPjMrZxJMYgTeJe8r5KKV49F5h1\":{  \r\n            \"itemName\":\"left door\",\r\n            \"itemPrice\":30000,\r\n            \"type\":0\r\n         }\r\n      },\r\n      \"tax\":\"5%\"\r\n   }\r\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{  \r\n   \"LossNo\":\"CI-1013\",\r\n   \"Step5\":{  \r\n      \"deductible\":2500,\r\n      \"depreciation\":\"25%\",\r\n      \"salvage\":2500,\r\n      \"sdParts\":{  \r\n         \"CoPjMrZxJMYgTeJe8r5KKV49F5h1\":{  \r\n            \"itemName\":\"left door\",\r\n            \"itemPrice\":30000,\r\n            \"type\":0\r\n         }\r\n      },\r\n      \"tax\":\"5%\"\r\n   }\r\n}"
+		},
+		{
+			"id": "5cea7726-1993-c251-9358-e3681bc14407",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://103.205.177.141:8889/SurveyorApp/api/Surveyor/InsertStep2Loss",
+			"folder": "4f30956b-e073-ac84-f2be-2abe43d258bf",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1561456376165,
+			"name": "Surveyor App Api End Point  Step 2 Loss",
+			"description": "Surveyor App Api End Point  Step 2 Loss",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 165,
+					"headers": [
+						{
+							"name": "access-control-allow-headers",
+							"key": "access-control-allow-headers",
+							"value": "Content-Type",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "access-control-allow-methods",
+							"key": "access-control-allow-methods",
+							"value": "GET, POST, PUT, DELETE, OPTIONS",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "0",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 25 Jun 2019 09:33:25 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "expires",
+							"key": "expires",
+							"value": "-1",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"name": "pragma",
+							"key": "pragma",
+							"value": "no-cache",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "Microsoft-IIS/8.5",
+							"description": "A name for the server"
+						},
+						{
+							"name": "x-aspnet-version",
+							"key": "x-aspnet-version",
+							"value": "4.0.30319",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "ASP.NET",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "plainText",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Surveyor App Api End Point  Step 2 Loss",
+					"id": "19bae8d8-15a0-516d-d5d8-c0f203bb2f88",
+					"request": "5cea7726-1993-c251-9358-e3681bc14407",
+					"requestObject": {
+						"url": "Surveyor App Api End Point  Step 2 Loss",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headers": "Content-Type: application/json\n",
+						"data": "{  \r\n   \"LossNo\":\"HICL3000\",\r\n   \"Step2\":{  \r\n      \"drivingLicenseUrls\":[  \r\n         \"www.test1.com\",\r\n         \"www.test2.com\"\r\n      ],\r\n      \"description\":\"Step 2 loss\",\r\n      \"policeReportUrls\":[  \r\n         \"www.test1.com\",\r\n         \"www.test2.com\"\r\n      ],\r\n      \"registrationBookUrls\":[  \r\n         \"www.test1.com\",\r\n         \"www.test2.com\"\r\n      ]\r\n   }\r\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{  \r\n   \"LossNo\":\"HICL3000\",\r\n   \"Step2\":{  \r\n      \"drivingLicenseUrls\":[  \r\n         \"www.test1.com\",\r\n         \"www.test2.com\"\r\n      ],\r\n      \"description\":\"Step 2 loss\",\r\n      \"policeReportUrls\":[  \r\n         \"www.test1.com\",\r\n         \"www.test2.com\"\r\n      ],\r\n      \"registrationBookUrls\":[  \r\n         \"www.test1.com\",\r\n         \"www.test2.com\"\r\n      ]\r\n   }\r\n}"
+		},
+		{
+			"id": "80bf4354-676a-a129-3bd2-696139574e18",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:64487/api/AddSurveyorCompany",
+			"folder": "1e7d28ae-3d0a-489a-980e-4de4fdb34fa7",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1561459855094,
+			"name": "Firebase API End point Add Surveyor Company",
+			"description": "Firebase API End point Add Surveyor Company. this API is host with Surveyor App Portal",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 11573,
+					"headers": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "0",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 25 Jun 2019 10:45:16 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "expires",
+							"key": "expires",
+							"value": "-1",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"name": "pragma",
+							"key": "pragma",
+							"value": "no-cache",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "Microsoft-IIS/10.0",
+							"description": "A name for the server"
+						},
+						{
+							"name": "x-aspnet-version",
+							"key": "x-aspnet-version",
+							"value": "4.0.30319",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "ASP.NET",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						},
+						{
+							"name": "x-sourcefiles",
+							"key": "x-sourcefiles",
+							"value": "=?UTF-8?B?RTpcRGF0YVxHaXQgcmVwb3NccG9ydGFsSGFiaWJJbnN1cmFuY2VcZ2l0aHViXGhpY2xfd2ViXGFwaVxBZGRTdXJ2ZXlvckNvbXBhbnk=?=",
+							"description": "Custom header"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "plainText",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Firebase API End point Add Surveyor Company Example",
+					"id": "564d257f-bb5c-dbc8-7ae4-e9b281ddfa30",
+					"request": {
+						"url": "http://localhost:64487/api/AddSurveyorCompany",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headers": "Content-Type: application/json\n",
+						"data": "{\n\t\"surveyorCompanyCode\" : \"0057000\",\n\t\"SurveyorCompanyName\": \"Clamix\",\n\t\"surveyorCompanyCityDesc\": \"123\"\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{\n\t\"surveyorCompanyCode\" : \"0057000\",\n\t\"SurveyorCompanyName\": \"Clamix\",\n\t\"surveyorCompanyCityDesc\": \"123\"\n}"
+		},
+		{
+			"id": "b46e95cc-8b44-89ff-9de3-abf8a1155363",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": " http://192.168.21.2:8889/SurveyorApp/api/Surveyor/InsertStep6Loss ",
+			"folder": "7d647987-dbb8-74df-3118-6f7e6e5f95ec",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1561462107975,
+			"name": "Surveyor App Api End Point Step 6 Loss",
+			"description": "Surveyor App Api End Point Step 6",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 176,
+					"headers": [
+						{
+							"name": "access-control-allow-headers",
+							"key": "access-control-allow-headers",
+							"value": "Content-Type",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "access-control-allow-methods",
+							"key": "access-control-allow-methods",
+							"value": "GET, POST, PUT, DELETE, OPTIONS",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "0",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 25 Jun 2019 09:43:41 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "expires",
+							"key": "expires",
+							"value": "-1",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"name": "pragma",
+							"key": "pragma",
+							"value": "no-cache",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "Microsoft-IIS/8.5",
+							"description": "A name for the server"
+						},
+						{
+							"name": "x-aspnet-version",
+							"key": "x-aspnet-version",
+							"value": "4.0.30319",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "ASP.NET",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "plainText",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Surveyor App Api End Point Step 6",
+					"id": "14d76016-7453-cb67-2093-73b48ba51dcf",
+					"request": {
+						"url": " http://192.168.21.2:8889/SurveyorApp/api/Surveyor/InsertStep6Loss ",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headers": "Content-Type: application/json\n",
+						"data": "{  \r\n   \"LossNo\":\"CI-23\",\r\n   \"Step6\":{  \r\n      \"finalInvoiceUrls\":[  \r\n         \"www.test1.comcomupde\",\r\n         \"www.test1.comupd\"\r\n      ],\r\n      \"satisfactionNote\":\"note here\",\r\n      \"reinspectionPhotoUrls\":[  \r\n         \"www.test1.comcomupdate\",\r\n         \"www.test1.comcomupdate\"\r\n      ],\r\n      \"claimFormUrls\":[  \r\n         \"www.test1.comcomupdate\",\r\n         \"www.test1.comcomupdate\"\r\n      ],\r\n      \"satisfactionNoteUrls\":[  \r\n         \"www.test1.comcomupdate\",\r\n         \"www.test1.comcomupdate\"\r\n      ]\r\n   }\r\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{  \r\n   \"LossNo\":\"CI-1013\",\r\n   \"Step6\":{  \r\n      \"finalInvoiceUrls\":[  \r\n         \"www.test1.comcomupde\",\r\n         \"www.test1.comupd\"\r\n      ],\r\n      \"satisfactionNote\":\"note here\",\r\n      \"einspectionPhotoUrls\":[  \r\n         \"www.test1.comcomupdate\",\r\n         \"www.test1.comcomupdate\"\r\n      ],\r\n      \"claimFormUrls\":[  \r\n         \"www.test1.comcomupdate\",\r\n         \"www.test1.comcomupdate\"\r\n      ],\r\n      \"satisfactionNoteUrls\":[  \r\n         \"www.test1.comcomupdate\",\r\n         \"www.test1.comcomupdate\"\r\n      ]\r\n   }\r\n}"
+		},
+		{
+			"id": "c115d03c-c130-ef37-959b-d0b6fafd7831",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": " http://192.168.21.2:8889/SurveyorApp/api/Surveyor/InsertStep4Loss ",
+			"folder": "4f30956b-e073-ac84-f2be-2abe43d258bf",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1561459277765,
+			"name": "Surveyor App Api End Point Step 4 Loss",
+			"description": "Surveyor App Api End Point Step 4 Loss",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": 0,
+					"headers": [],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "",
+					"rawDataType": "",
+					"previewType": "parsed",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Surveyor App Api End Point Step 4 (Error)",
+					"id": "4e54ba3a-05a9-0a07-06b1-652956f75378",
+					"request": {
+						"url": " http://192.168.21.2:8889/SurveyorApp/api/Surveyor/InsertStep4Loss ",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headers": "Content-Type: application/json\n",
+						"data": "{  \r\n   \"LossNo\":\"HICL3000\",\r\n   \"step4\":{  \r\n      \"estimateEditedUrls\":[  \r\n         \"url1\",\r\n         \"url2\"\r\n      ],\r\n      \"estimateOriginalUrls\":[  \r\n         \"url1\",\r\n         \"url2\"\r\n      ]\r\n   }\r\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{\r\n \"LossNo\" : \"CI-1014\",\r\n \"step4\" :{\r\n   \"estimateEditedUrls\" : [ \"url1\", \"url2\" ],\r\n   \"estimateOriginalUrls\" : [ \"url1\", \"url2\" ],\r\n    \"repairedParts\" : {\r\n     \"AKv95M8BRTMOkXCshG4GEjR2sqr1eerrweewweeewrwewewewe\" : {\r\n       \"itemName\" : \"front bumper\",\r\n       \"itemPrice\" : 300000\r\n     }\r\n   },\r\n   \"replacedParts\" : {\r\n     \"AKv95M8BRTMOkXCshG4GEjR2sqr1\" : {\r\n       \"itemName\" : \"side mirror\",\r\n       \"itemPrice\" : 2768\r\n     }\r\n   }\r\n }\r\n}\r\n\r\n\t\r\n\r\n\r\n\r\n"
+		},
+		{
+			"id": "c13f1cf7-0305-8f02-18e2-efe531c4f206",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://192.168.21.2:8889/SurveyorApp/api/Surveyor/InsertStep1Loss ",
+			"folder": "7d647987-dbb8-74df-3118-6f7e6e5f95ec",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1561455052420,
+			"name": "Surveyor App Api End Point Step 1 Loss",
+			"description": "Surveyor App Api End Point Step 1 Loss",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": 0,
+					"headers": [],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "",
+					"rawDataType": "",
+					"previewType": "parsed",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Surveyor App Api End Point Step 1 Loss",
+					"id": "080c0208-4d8e-4d24-628a-806d7ab69da3",
+					"request": {
+						"url": "http://192.168.21.2:8889/SurveyorApp/api/Surveyor/InsertStep1Loss ",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headers": "Content-Type: application/json\n",
+						"data": "{ \n\t\"LossNo\" : \"HICL3008\",  \n\t\"Step1\" :\n\t{   \n\t\t\"Loss\" : 1 \n\t}  \n\t\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"isFromCollection": true,
+			"collectionRequestId": "c13f1cf7-0305-8f02-18e2-efe531c4f206",
+			"rawModeData": "{ \n\t\"LossNo\" : \"HICL3008\",  \n\t\"Step1\" :\n\t{   \n\t\t\"Loss\" : 1 \n\t}  \n\t\n}"
+		},
+		{
+			"id": "e3fda277-c22a-f79b-3100-5e7cd04b762b",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": " http://192.168.21.2:8889/SurveyorApp/api/Surveyor/InsertStep5Loss ",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Sureveyor App Api End Point Step 5 Loss",
+			"description": "Sureveyor App Api End Point Step 5",
+			"descriptionFormat": "html",
+			"time": 1561455775311,
+			"version": 2,
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 57,
+					"headers": [
+						{
+							"name": "access-control-allow-headers",
+							"key": "access-control-allow-headers",
+							"value": "Content-Type",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "access-control-allow-methods",
+							"key": "access-control-allow-methods",
+							"value": "GET, POST, PUT, DELETE, OPTIONS",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "0",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 25 Jun 2019 09:42:29 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "expires",
+							"key": "expires",
+							"value": "-1",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"name": "pragma",
+							"key": "pragma",
+							"value": "no-cache",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "Microsoft-IIS/8.5",
+							"description": "A name for the server"
+						},
+						{
+							"name": "x-aspnet-version",
+							"key": "x-aspnet-version",
+							"value": "4.0.30319",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "ASP.NET",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "plainText",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Sureveyor App Api End Point Step 5 ",
+					"id": "fdb7e9f5-d962-cf6e-5e6e-623e4d728896",
+					"request": {
+						"url": " http://192.168.21.2:8889/SurveyorApp/api/Surveyor/InsertStep5Loss ",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headers": "Content-Type: application/json\n",
+						"data": "{  \r\n   \"LossNo\":\"CI-1013\",\r\n   \"Step5\":{  \r\n      \"deductible\":2500,\r\n      \"depreciation\":\"25%\",\r\n      \"salvage\":2500,\r\n      \"sdParts\":{  \r\n         \"CoPjMrZxJMYgTeJe8r5KKV49F5h1\":{  \r\n            \"itemName\":\"left door\",\r\n            \"itemPrice\":30000,\r\n            \"type\":0\r\n         }\r\n      },\r\n      \"tax\":\"5%\"\r\n   }\r\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "7d647987-dbb8-74df-3118-6f7e6e5f95ec",
+			"rawModeData": "{  \r\n   \"LossNo\":\"CI-1013\",\r\n   \"Step5\":{  \r\n      \"deductible\":2500,\r\n      \"depreciation\":\"25%\",\r\n      \"salvage\":2500,\r\n      \"sdParts\":{  \r\n         \"CoPjMrZxJMYgTeJe8r5KKV49F5h1\":{  \r\n            \"itemName\":\"left door\",\r\n            \"itemPrice\":30000,\r\n            \"type\":0\r\n         }\r\n      },\r\n      \"tax\":\"5%\"\r\n   }\r\n}"
+		},
+		{
+			"id": "ea828e16-cb65-34c9-0c20-6e2027f34e3c",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": " http://192.168.21.2:8889/SurveyorApp/api/Surveyor/InsertStep3Loss ",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Surveyor App Api End Point Step 3 Loss",
+			"description": "Surveyor App Api End Point Step 3 Loss",
+			"descriptionFormat": "html",
+			"time": 1561455380558,
+			"version": 2,
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": 0,
+					"headers": [],
+					"cookies": [],
+					"mime": "",
+					"text": "",
+					"language": "",
+					"rawDataType": "",
+					"previewType": "parsed",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Surveyor App Api End Point Step 3 Loss",
+					"id": "c30ef1dd-fbc5-6e0b-716d-09c195816c71",
+					"request": {
+						"url": " http://192.168.21.2:8889/SurveyorApp/api/Surveyor/InsertStep3Loss ",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headers": "Content-Type: application/json\n",
+						"data": "{  \r\n   \"LossNo\":\"CI-1013\",\r\n   \"Step3\":{  \r\n      \"damagedPhotos\":[  \r\n         {  \r\n            \"chasisAndEngineNoUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"meterReadingUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"numberPlateUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"othersDamagedPhotosUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"seatBeltUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"tikliUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         }\r\n      ],\r\n      \"damagedAreas\":[  \r\n         true,\r\n         false,\r\n         true,\r\n         false,\r\n         true,\r\n         false,\r\n         false,\r\n         false,\r\n         true,\r\n         false,\r\n         true,\r\n         false,\r\n         true,\r\n         false\r\n      ]\r\n   }\r\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "7d647987-dbb8-74df-3118-6f7e6e5f95ec",
+			"isFromCollection": true,
+			"collectionRequestId": "ea828e16-cb65-34c9-0c20-6e2027f34e3c",
+			"rawModeData": "{  \r\n   \"LossNo\":\"CI-1013\",\r\n   \"Step3\":{  \r\n      \"damagedPhotos\":[  \r\n         {  \r\n            \"chasisAndEngineNoUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"meterReadingUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"numberPlateUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"othersDamagedPhotosUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"seatBeltUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         },\r\n         {  \r\n            \"tikliUrls\":[  \r\n               \"url1\",\r\n               \"url2\"\r\n            ]\r\n         }\r\n      ],\r\n      \"damagedAreas\":[  \r\n         true,\r\n         false,\r\n         true,\r\n         false,\r\n         true,\r\n         false,\r\n         false,\r\n         false,\r\n         true,\r\n         false,\r\n         true,\r\n         false,\r\n         true,\r\n         false\r\n      ]\r\n   }\r\n}"
+		},
+		{
+			"id": "fbebdfdc-82a5-2d79-7b96-8c0790144488",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": " http://103.205.177.141:8889/SurveyorApp/api/Surveyor/InsertStep4Loss ",
+			"folder": "4f30956b-e073-ac84-f2be-2abe43d258bf",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1561459276861,
+			"name": "Surveyor App Api End Point Step 4 Loss",
+			"description": "Surveyor App Api End Point Step 4 (Error)\nInternal Server Error , Error Code 500\n{\n    \"Message\": \"An error has occurred.\"\n}",
+			"collectionId": "e135fcb3-680a-158f-8409-b61c57fe7b02",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 500,
+						"name": "Internal Server Error",
+						"detail": "A generic error message, given when no more specific message is suitable."
+					},
+					"time": 25,
+					"headers": [
+						{
+							"name": "access-control-allow-headers",
+							"key": "access-control-allow-headers",
+							"value": "Content-Type",
+							"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+						},
+						{
+							"name": "access-control-allow-methods",
+							"key": "access-control-allow-methods",
+							"value": "GET, POST, PUT, DELETE, OPTIONS",
+							"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+						},
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "36",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Tue, 25 Jun 2019 09:53:45 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "expires",
+							"key": "expires",
+							"value": "-1",
+							"description": "Gives the date/time after which the response is considered stale"
+						},
+						{
+							"name": "pragma",
+							"key": "pragma",
+							"value": "no-cache",
+							"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "Microsoft-IIS/8.5",
+							"description": "A name for the server"
+						},
+						{
+							"name": "x-aspnet-version",
+							"key": "x-aspnet-version",
+							"value": "4.0.30319",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "ASP.NET",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"Message\":\"An error has occurred.\"}",
+					"language": "json",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "Surveyor App Api End Point Step 4 (Error) copy",
+					"id": "c0101069-7302-a467-beed-43d0d43d3197",
+					"request": {
+						"url": " http://103.205.177.141:8889/SurveyorApp/api/Surveyor/InsertStep4Loss ",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headers": "Content-Type: application/json\n",
+						"data": "{  \r\n   \"LossNo\":\"HICL3000\",\r\n   \"step4\":{  \r\n      \"estimateEditedUrls\":[  \r\n         \"url1\",\r\n         \"url2\"\r\n      ],\r\n      \"estimateOriginalUrls\":[  \r\n         \"url1\",\r\n         \"url2\"\r\n      ]\r\n   }\r\n}",
+						"method": "POST",
+						"dataMode": "raw"
+					}
+				}
+			],
+			"rawModeData": "{\r\n \"LossNo\" : \"CI-1014\",\r\n \"step4\" :{\r\n   \"estimateEditedUrls\" : [ \"url1\", \"url2\" ],\r\n   \"estimateOriginalUrls\" : [ \"url1\", \"url2\" ],\r\n    \"repairedParts\" : {\r\n     \"AKv95M8BRTMOkXCshG4GEjR2sqr1eerrweewweeewrwewewewe\" : {\r\n       \"itemName\" : \"front bumper\",\r\n       \"itemPrice\" : 300000\r\n     }\r\n   },\r\n   \"replacedParts\" : {\r\n     \"AKv95M8BRTMOkXCshG4GEjR2sqr1\" : {\r\n       \"itemName\" : \"side mirror\",\r\n       \"itemPrice\" : 2768\r\n     }\r\n   }\r\n }\r\n}\r\n\r\n\t\r\n\r\n\r\n\r\n"
+		}
+	]
+}

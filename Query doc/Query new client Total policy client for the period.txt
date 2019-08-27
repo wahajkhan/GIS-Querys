@@ -1,0 +1,12 @@
+
+-- new client Total policy client for the period
+
+select distinct count(distinct CLIENT_CODE) clientcount,count(docrefno)doccount,sum(coalesce(a.grossprem,0))gp,sum(coalesce(a.grossprem,0))+sum(coalesce(a.admin,0)) gpadmin
+FROM  premium_view a
+left outer join pr_gn_ps_party pp on (a.client_code=pp.pps_party_code)
+where a.issuedate  BETWEEN '01-JAN-2018' AND '31-DEC-2018'
+and A.PDP_DEPT_CODE between '01' and '99' 
+and A.PLC_LOC_CODE between '00001' and '99999' 
+and a.pdt_doctype IN ('P')
+and pp.CREATE_DATE BETWEEN '01-JAN-2018' AND '31-DEC-2018'
+;

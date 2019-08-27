@@ -1,0 +1,24 @@
+SELECT 
+--p.PPS_DESC client,
+--L.PLC_LOCADESC location,
+--dp.PDP_DEPTDESC dept,
+--count( i.GIH_DOC_REF_NO)
+-- i.GIH_DOC_REF_NO
+
+FROM  PR_GN_PS_PARTY p
+left outer join hil.gi_gc_ih_intimationhd i on (i.PPS_PARTY_CODE =p.PPS_PARTY_CODE)
+left outer join PR_GN_PB_PARTYLOCATION pl on (p.PPS_PARTY_CODE=pl.PPS_PARTY_CODE)
+LEFT OUTER JOIN PR_GN_LC_LOCATION L ON (pl.PLC_LOC_cODE=L.PLC_LOCACODE)
+LEFT OUTER JOIN pr_gn_dp_department dp ON (
+            dp.pdp_dept_code = i.PDP_DEPT_CODE
+            AND
+            dp.plc_loc_code = L.PLC_LOC_CODE
+    )
+LEFT OUTER JOIN PR_GN_AS_ADDRESS AD ON (AD.PAS_ENTITYCODE=P.PPS_PARTY_CODE AND PAS_ENTITYTYPE='PRT')
+LEFT OUTER JOIN PR_GN_AT_ADDRESS_TYPE AT ON (AT.PAT_ADD_TYPE=AD.PAS_ADD_TYPE)
+where pps_nature='C' and pps_type='D' and pps_status='A'
+AND PPS_CREATE_SYSDATE BETWEEN '01-JAN-2019' AND '31-MAR-2019'
+and PPS_PARTY_CODE=1103000045
+--Group by p.PPS_DESC , L.PLC_LOCADESC,  dp.PDP_DEPTDESC
+
+;

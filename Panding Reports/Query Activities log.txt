@@ -1,0 +1,26 @@
+SELECT
+    g.plc_loc_code,
+    l.plc_locadesc Location,
+    pp.pps_desc Client,
+    COUNT(*) AS count
+FROM
+    hil.gi_gu_dh_doc_header g
+    LEFT OUTER JOIN pr_gn_lc_location l ON (
+        l.plc_loc_code = g.plc_loc_code
+    )
+    LEFT OUTER JOIN pr_gn_ps_party pp ON (
+        g.pps_party_code = pp.pps_party_code
+    )
+WHERE
+        g.gdh_year = '2018'
+    AND
+        g.pdt_doctype = 'A'
+    AND
+        g.pdp_dept_code = '13'
+    AND
+        g.gdh_posting_tag = 'Y'
+GROUP BY
+    g.PLC_LOC_CODE
+    ,l.PLC_LOCADESC
+    ,pp.PPS_DESC
+ORDER BY COUNT DESC, l.plc_locadesc,pp.pps_desc;

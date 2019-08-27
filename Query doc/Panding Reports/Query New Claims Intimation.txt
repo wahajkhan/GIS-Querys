@@ -1,0 +1,111 @@
+
+-- New Claims Intimation 
+SELECT COUNT(INTIMATIONNO) ic
+--,coalesce(SUM(LOSS),0) loss,coalesce(SUM(SURV_FEES),0)survyfee,coalesce(SUM(RECOVERY),0)recov,coalesce(SUM(ADV_FEES),0) advfees,
+--(coalesce(SUM(LOSS),0)+coalesce(SUM(SURV_FEES),0)+coalesce(SUM(ADV_FEES),0))-coalesce(SUM(RECOVERY),0) as netloss
+FROM(
+SELECT 
+L_Loss.POR_ORG_CODE ,
+L_Loss.PLC_LOC_CODE,
+L_Loss.PDP_DEPT_CODE,
+L_Loss.PDT_DOCTYPE,
+L_Loss.GIH_DOCUMENTNO,
+L_Loss.GIH_INTI_ENTRYNO,
+L_Loss.GIH_YEAR,
+L_Loss.GIH_DOC_REF_NO intimationno,
+idtl.GID_BASEDOCUMENTNO policyno,
+L_Loss.PPS_PARTY_CODE, 
+(Select POR_ORGADESC From PR_GN_OR_ORGANIZATION BR Where BR.POR_ORG_CODE=L_Loss.POR_ORG_CODE)  ORGAN,
+(Select PLC_LOCADESC From PR_GN_LC_LOCATION BR Where BR.POR_ORG_CODE=L_Loss.POR_ORG_CODE And BR.PLC_LOC_CODE=L_Loss.PLC_LOC_CODE)  BR,
+(Select PDP_DEPTDESC From PR_GN_DP_DEPARTMENT DPT Where DPT.POR_ORG_CODE=L_Loss.POR_ORG_CODE And DPT.PLC_LOC_CODE=L_Loss.PLC_LOC_CODE And DPT.PDP_DEPT_CODE=L_Loss.PDP_DEPT_CODE)  Deptt,
+(Select PPS_SHORT_DESC From PR_GN_PS_PARTY Cust Where Cust.PPS_PARTY_CODE=L_Loss.PPS_PARTY_CODE) Client,
+(Select POC_LOSSDESC From PR_GC_OC_LOSS_CAUSE LOSS Where LOSS.POR_ORG_CODE=L_Loss.POR_ORG_CODE And LOSS.PDP_DEPT_CODE=L_Loss.PDP_DEPT_CODE And LOSS.POC_LOSSCODE=L_Loss.POC_LOSSCODE)  Loss_Type,
+
+ 
+     
+L_Loss.GIH_DATEOFLOSS,
+L_Loss.GIH_INTIMATIONDATE,
+L_Loss.GIH_REVISIONDATE,
+Case When L_Loss.GIH_REVISIONDATE Is Null  Then L_Loss.GIH_INTIMATIONDATE Else L_Loss.GIH_REVISIONDATE End Trans_Date,
+Case When L_Loss.GIH_NOCLAIM_TAG Is Null Or  L_Loss.GIH_NOCLAIM_TAG='N' Then 0
+Else
+ Case When COALESCE(L_Loss.GIH_LOSSADJUSTED,0) <> 0 Then COALESCE(L_Loss.GIH_LOSSADJUSTED,0) 
+  Else
+   Case  When COALESCE(L_Loss.GIH_LOSSASSESSED,0) <> 0 Then COALESCE(L_Loss.GIH_LOSSASSESSED,0) 
+     Else COALESCE(L_Loss.GIH_LOSSCLAIMED,0) 
+   End
+ End 
+End Loss,
+
+ (Select Max ( Case When COALESCE(A.GIH_LOSSADJUSTED,0) <> 0 Then COALESCE(A.GIH_LOSSADJUSTED,0) 
+               Else
+                Case  When COALESCE(A.GIH_LOSSASSESSED,0) <> 0 Then COALESCE(A.GIH_LOSSASSESSED,0) 
+                 Else COALESCE(A.GIH_LOSSCLAIMED,0) 
+                End 
+               End 
+            )
+ From   GI_GC_IH_INTIMATIONHD A
+ Where  A.POR_ORG_CODE             = L_Loss.POR_ORG_CODE  And A.PLC_LOC_CODE   = L_Loss.PLC_LOC_CODE   And 
+        A.PDP_DEPT_CODE            = L_Loss.PDP_DEPT_CODE And A.GIH_DOCUMENTNO = L_Loss.GIH_DOCUMENTNO And
+        L_Loss.GIH_INTI_ENTRYNO -1 = A.GIH_INTI_ENTRYNO   AND A.GIH_YEAR       = L_Loss.GIH_YEAR        ) 
+  Previous_Loss,
+ (Select SUM(Nvl(GSB_SALVAGE_AMOUNT,0)) From GI_GC_SB_SALVAGEBREAKUP D
+ Where  D.POR_ORG_CODE             = L_Loss.POR_ORG_CODE  And D.PLC_LOC_CODE   = L_Loss.PLC_LOC_CODE   And 
+        D.PDP_DEPT_CODE            = L_Loss.PDP_DEPT_CODE And D.GIH_DOCUMENTNO = L_Loss.GIH_DOCUMENTNO And
+        L_Loss.GIH_INTI_ENTRYNO    = D.GIH_INTI_ENTRYNO   AND D.GIH_YEAR       = L_Loss.GIH_YEAR        ) 
+ AS RECOVERY,
+(Select SUM(Nvl(GSB_SALVAGE_AMOUNT,0)) From GI_GC_SB_SALVAGEBREAKUP D
+  Where  D.POR_ORG_CODE             = L_Loss.POR_ORG_CODE  And D.PLC_LOC_CODE   = L_Loss.PLC_LOC_CODE   And 
+         D.PDP_DEPT_CODE            = L_Loss.PDP_DEPT_CODE And D.GIH_DOCUMENTNO = L_Loss.GIH_DOCUMENTNO And
+         L_Loss.GIH_INTI_ENTRYNO-1  = D.GIH_INTI_ENTRYNO   AND D.GIH_YEAR       = L_Loss.GIH_YEAR        ) 
+ AS PRV_RECOVERY,
+
+ (Select MAX( COALESCE(GUD_SURVEYFEECLAIMED,0) + COALESCE(GUD_OTHERCHARGES,0) ) From   GI_GC_UD_SURVEYORDTL B
+  Where  B.POR_ORG_CODE             = L_Loss.POR_ORG_CODE  And B.PLC_LOC_CODE   = L_Loss.PLC_LOC_CODE   And 
+         B.PDP_DEPT_CODE            = L_Loss.PDP_DEPT_CODE And B.GIH_DOCUMENTNO = L_Loss.GIH_DOCUMENTNO And
+         L_Loss.GIH_INTI_ENTRYNO   = B.GIH_INTI_ENTRYNO   AND B.GIH_YEAR       = L_Loss.GIH_YEAR        ) 
+ Surv_Fees,  
+
+(Select MAX( COALESCE(GUD_SURVEYFEECLAIMED,0) + COALESCE(GUD_OTHERCHARGES,0) ) From GI_GC_UD_SURVEYORDTL B
+  Where  B.POR_ORG_CODE             = L_Loss.POR_ORG_CODE  And B.PLC_LOC_CODE   = L_Loss.PLC_LOC_CODE   And 
+         B.PDP_DEPT_CODE            = L_Loss.PDP_DEPT_CODE And B.GIH_DOCUMENTNO = L_Loss.GIH_DOCUMENTNO And
+         L_Loss.GIH_INTI_ENTRYNO -1   = B.GIH_INTI_ENTRYNO   AND B.GIH_YEAR       = L_Loss.GIH_YEAR        ) 
+ 
+  AS Previous_Surv_Fees ,
+
+
+ (Select MAX( COALESCE(GVD_AMTCLAIMED,0) ) From GI_GC_VD_ADVOCATEDTL C
+  Where  C.POR_ORG_CODE             = L_Loss.POR_ORG_CODE  And C.PLC_LOC_CODE   = L_Loss.PLC_LOC_CODE   And 
+         C.PDP_DEPT_CODE            = L_Loss.PDP_DEPT_CODE And C.GIH_DOCUMENTNO = L_Loss.GIH_DOCUMENTNO And
+         L_Loss.GIH_INTI_ENTRYNO    = C.GIH_INTI_ENTRYNO   AND C.GIH_YEAR       = L_Loss.GIH_YEAR        ) 
+  AS  Adv_Fees,
+
+ (Select  MAX( COALESCE(GVD_AMTCLAIMED,0) ) From GI_GC_VD_ADVOCATEDTL D
+  Where  D.POR_ORG_CODE             = L_Loss.POR_ORG_CODE  And D.PLC_LOC_CODE   = L_Loss.PLC_LOC_CODE   And 
+         D.PDP_DEPT_CODE            = L_Loss.PDP_DEPT_CODE And D.GIH_DOCUMENTNO = L_Loss.GIH_DOCUMENTNO And
+         L_Loss.GIH_INTI_ENTRYNO -1 = D.GIH_INTI_ENTRYNO   AND D.GIH_YEAR       = L_Loss.GIH_YEAR        ) 
+ 
+   AS Previous_Adv_Fees
+
+
+From GI_GC_IH_INTIMATIONHD L_Loss 
+left outer join GI_GC_ID_INTIMATIONDTL idtl on 
+(idtl.POR_ORG_CODE             = L_Loss.POR_ORG_CODE  And idtl.PLC_LOC_CODE   = L_Loss.PLC_LOC_CODE   And 
+         idtl.PDP_DEPT_CODE            = L_Loss.PDP_DEPT_CODE And idtl.GIH_DOCUMENTNO = L_Loss.GIH_DOCUMENTNO And
+         L_Loss.GIH_INTI_ENTRYNO -1 = idtl.GIH_INTI_ENTRYNO   AND idtl.GIH_YEAR       = L_Loss.GIH_YEAR        )
+
+Where 
+--GIH_DOC_REF_NO='2018CBDVPCDI00001'  AND
+GIH_INTIMATIONDATE BETWEEN '01-JAN-2018' AND '31-dec-2018'
+AND
+ GIH_POSTINGTAG = 'Y'
+ AND GIH_NOCLAIM_TAG = 'V'
+  And (COALESCE(L_Loss.GIH_CANCELLATIONTAG,'NO')='NO' OR L_Loss.GIH_CANCELLATIONTAG='')
+and PPS_PARTY_CODE='1300019811'
+  and l_loss.gih_inti_entryno=1
+  --(select max(gih_inti_entryno) from GI_GC_IH_INTIMATIONHD where GIH_DOC_REF_NO=L_Loss.GIH_DOC_REF_NO) 
+              --AND
+-- Case When L_Loss.GIH_REVISIONDATE Is Null  Then L_Loss.GIH_INTIMATIONDATE Else L_Loss.GIH_REVISIONDATE End BETWEEN {?Date_From} And {?Date_To}
+-- ORDER BY  L_Loss.PLC_LOC_CODE, Case When L_Loss.GIH_REVISIONDATE Is Null  Then L_Loss.GIH_INTIMATIONDATE Else L_Loss.GIH_REVISIONDATE End, L_Loss.GIH_DOCUMENTNO, L_Loss.GIH_INTI_ENTRYNO
+)
+;

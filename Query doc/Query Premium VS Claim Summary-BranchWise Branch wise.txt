@@ -1,0 +1,19 @@
+
+select Branch,coalesce(sum(prem),0)prem,coalesce(sum(ci),0)ci,round(coalesce((coalesce(sum(ci),0)/(case when coalesce(sum(prem),0)=0 then 1 else coalesce(sum(prem),0)end ))*100,0),0) Ratio
+from(
+select pps_Desc client,Branch,DEPTCODE,dp.pdp_desc dept,
+(case when SMODE='Premium' then coalesce(sum(grossamt),0) else 0 end) Prem,
+(case when SMODE='Claim' then coalesce(sum(grossamt),0) else 0 end) CI
+from (
+select H.CLIENTCODE, H.CLIENTNAME, DEPTCODE,BRANCH, (case when H.SMODE<>'Premium' then 'Claim'else smode end) smode,coalesce(sum(grossamt),0) grossamt 
+FROM HIL.HICL_STATS H Where SYEAR in ('2018')
+ group by H.CLIENTCODE, H.CLIENTNAME, DEPTCODE,BRANCH, H.SMODE 
+union all
+select H.CLIENTCODE, H.CLIENTNAME, DEPTCODE,BRANCH, (case when H.SMODE<>'Premium' then 'Claim'else smode end) smode,coalesce(sum(grossamt)*-1,0) grossamt 
+FROM HIL.HICL_STATS H Where SYEAR in ('2017') and smode like 'Claims O/s 2017%'
+ group by H.CLIENTCODE, H.CLIENTNAME, DEPTCODE,BRANCH, H.SMODE) a
+left outer join (select distinct pdp_Dept_code,pdp_desc from pr_gn_dp_department) dp on (dp.pdp_dept_code=a.DEPTCODE )
+left outer join pr_gn_ps_party pp on (a.clientcode=pp.pps_party_code)
+
+group by pps_Desc,Branch,DEPTCODE,dp.pdp_desc,SMODE)
+group by Branch;

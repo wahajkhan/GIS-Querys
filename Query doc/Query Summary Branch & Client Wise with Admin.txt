@@ -1,0 +1,33 @@
+
+--Summary Branch & Client Wise with Admin
+select  
+a.plc_loc_code,lc.plc_desc,a.client_code,pp.pps_desc client,a.pdp_dept_code, a.PDO_DEVOFFCODE,dv.PDO_DEVOFFDESC,
+case when dp.pdp_desc='Health' then 'Miscellaneous' else dp.pdp_desc end dept,year(a.issuedate) yr,
+month(a.issuedate) mt,
+case when year(a.issuedate)='2018' then count(docrefno) else 0 end as doc_ref_curr,
+case when year(a.issuedate)='2018'-1 then count(docrefno) else 0 end as doc_ref_prev, 
+case when year(a.issuedate)='2018' then sum(coalesce(a.suminsured,0)) else 0 end as suminsured_curr,
+case when year(a.issuedate)='2018'-1 then sum(coalesce(a.suminsured,0)) else 0 end as  suminsured_prev, 
+case when year(a.issuedate)='2018' then sum(coalesce(a.grossprem,0))+sum(coalesce(a.admin,0)) else 0 end as curr_grosspremium,
+case when year(a.issuedate)='2018'-1 then sum(coalesce(a.grossprem,0))+sum(coalesce(a.admin,0)) else 0 end as  prev_grosspremium
+
+from premium_view a 
+left outer join pr_gn_lc_location lc on (a.plc_loc_code=lc.plc_loc_code)
+left outer join pr_gn_dp_department dp on (dp.pdp_dept_code=a.pdp_dept_code and dp.plc_loc_code=a.plc_loc_code)
+left outer join pr_gn_ps_party pp on (a.client_code=pp.pps_party_code)
+left outer join PR_GG_DO_DEVOFFICER dv on (a.PDO_DEVOFFCODE=dv.PDO_DEVOFFCODE)
+where 
+year(a.issuedate) <='2018' and year(a.issuedate) >= '2018'-1
+AND month(a.issuedate) between '01' and '12'
+and A.PDP_DEPT_CODE between '01' and '99' 
+and A.PLC_LOC_CODE between '00001' and '99999' 
+AND 'A'='A'
+and a.client_code between case 'All' when 'All' then a.client_code else 'All' end and case 'All' when 'All' then a.client_code else'All' end 
+and a.pdt_doctype IN ('O','E','P')
+
+group by a.plc_loc_code,lc.plc_desc,a.client_code,pp.pps_desc,a.pdp_dept_code, dp.pdp_desc ,year(a.issuedate)
+,month(a.issuedate) ,a.PDO_DEVOFFCODE,dv.PDO_DEVOFFDESC
+ order by a.plc_loc_code,lc.plc_desc,a.client_code,pp.pps_desc,a.pdp_dept_code, dp.pdp_desc,year(a.issuedate)
+ ,month(a.issuedate),a.PDO_DEVOFFCODE,dv.PDO_DEVOFFDESC
+
+;

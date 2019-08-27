@@ -1,0 +1,218 @@
+
+--Claim Paid Numbers
+
+
+SELECT  
+count(*) pc
+--(select distinct por_desc from pr_gn_or_organization where por_org_code='001001')cmpname,
+----(select distinct plc_desc from pr_gn_lc_location where plc_loc_code={?BRFROM})br1,
+----(select distinct plc_desc from pr_gn_lc_location where plc_loc_code={?BRTO})br2,
+----(select distinct pdp_desc from pr_gn_dp_department where pdp_dept_code={?DEPFROM})dp1,
+----(select distinct pdp_desc from pr_gn_dp_department where pdp_dept_code={?DEPTO})dp2,
+----(SELECT distinct pps_desc from pr_gn_ps_party where pps_party_code={?CLIENTFROM})pps1,
+----(SELECT distinct pps_desc from pr_gn_ps_party where pps_party_code={?CLIENTTO})pps2,
+--case when (
+--(coalesce(SH.GSH_SURV_OURSHARE,'N')='Y' and b.PSP_STYPCODE='0007') or
+--(coalesce(SH.GSH_ADVOCATE_OURSHARE,'N')='Y' and b.PSP_STYPCODE='0008') or
+--(coalesce(SH.GSH_LOSS_OURSHARE,'N')='Y' and b.PSP_STYPCODE NOT IN ('0007','0008') )
+--) then 100 else 
+--coalesce(ic.gic_share,100) end gic_share,
+--isubdtl.GIS_SAILING_DATE,coalesce(stx.payee_name,'N/A')payeename,coalesce(sv.psr_surv_name,'None')psr_surv_name,
+--B.VCHDATE,B.CLMREF,ih.gih_inti_entryno,COALESCE(B.KNOCKOFFAMOUNT,0)KNOCKOFF,B.PPF_PRFCCODE,B.PLC_LOCACODE,B.PVT_VCHTTYPE,B.LVH_VCHDNO,ih.GIH_OLDCLAIM_NO,piy.piy_desc,
+--IH.GIH_INTIMATIONDATE,idtl.gid_basedocumentno policyno,idtl.gid_commdate,idtl.gid_expirydate,idtl.gid_issuedate,
+--coalesce(isubDtl.GIS_REGISTRATION_NO,'N/A') regno,coalesce(isubdtl.GIS_ENGINE_NO,'N/A')engineno, coalesce(isubdtl.GIS_CHASSIS_NO,'N/A')chassis,
+--COALESCE(X.TLOSS,0) as TLoss  ,sv.psr_surv_name,
+--CASE coalesce(ISUBDTL.GIS_LOSSADJUSTED, 0)  WHEN 0 THEN      CASE coalesce(ISUBDTL.GIS_LOSSASSESSED, 0)  
+--              WHEN 0 THEN  CASE coalesce(ISUBDTL.GIS_LOSSCLAIMED, 0)  WHEN 0 THEN 0  ELSE coalesce(ISUBDTL.GIS_LOSSCLAIMED, 0)  END  
+--              ELSE coalesce (ISUBDTL.GIS_LOSSASSESSED, 0)  END  
+--ELSE coalesce(ISUBDTL.gIS_LOSSADJUSTED, 0)  
+--END * CASE  WHEN coalesce(IH.GIH_NOCLAIM_TAG,'V') = 'N' THEN 0 ELSE 1 END+
+--coalesce(ISUBDTL.gis_surveyoramt,0) +coalesce(ISUBDTL.gis_advocateamt,0)-coalesce(ISUBDTL.GIS_SALVAGEAMT,0) as Loss,
+--coalesce(isubdtl.gis_suminsured,0)gis_suminsured,
+--(coalesce(isubdtl.gis_lossclaimed,0)) gis_lossclaimed,
+--(coalesce(isubdtl.gis_lossassessed,0)) gis_lossassessed,
+--(coalesce(isubdtl.gis_lossadjusted,0)) gis_lossadjusted,
+--(coalesce(isubdtl.gis_surveyoramt,0)) gis_surveyoramt,
+--(coalesce(isubdtl.gis_advocateamt,0)) gis_advocateamt, 
+--(coalesce(isubdtl.GIS_EXCESSAMOUNT,0)) GIS_EXCESSAMOUNT, 
+--(coalesce(isubdtl.GIS_SALVAGEAMT,0)) GIS_SALVAGEAMT, 
+--(coalesce(isubdtl.GIS_FACULTAMOUNT,0)) GIS_FACULTAMOUNT, 
+--(coalesce(isubdtl.GIS_FOREIGNFACULT_AMOUNT,0)) GIS_FOREIGNFACULT_AMOUNT , 
+--(coalesce(isubdtl.GIS_CONETAMOUNT,0)) GIS_CONETAMOUNT, 
+--(coalesce(isubdtl.GIS_TREATYAMOUNT,0)) GIS_TREATYAMOUNT , 
+--coalesce(h.gdh_as400_documentno,'X') old_documentno,
+--ih.gih_revisiondate,b.check_no,b.check_date,
+--IH.GIH_DATEOFLOSS,IH.PPS_PARTY_CODE,CL.POC_LOSSDESC,PP.PPS_DESC,DP.PDP_DESC,LC.PLC_DESC,b.sett_no 
+FROM  GI_GC_IH_INTIMATIONHD IH
+inner join GI_GC_ID_INTIMATIONDTL IDTL 
+on 
+( 
+IH.POR_ORG_CODE         = IDTL.POR_ORG_CODE     AND 
+IH.PLC_LOC_CODE          = IDTL.PLC_LOC_CODE     AND 
+IH.PDP_DEPT_CODE        = IDTL.PDP_DEPT_CODE    AND 
+IH.PDT_DOCTYPE            = IDTL.PDT_DOCTYPE      AND 
+IH.GIH_DOCUMENTNO     = IDTL.GIH_DOCUMENTNO   AND     
+IH.GIH_INTI_ENTRYNO    = IDTL.GIH_INTI_ENTRYNO AND 
+IH.GIH_YEAR                  = IDTL.GIH_YEAR 
+) INNER JOIN
+PR_GG_IY_INSURANCETYPE PIY
+ON
+(
+iH.PIY_INSUTYPE=PIY.PIY_INSUTYPE
+)
+left outer join 
+(
+select por_org_code,plc_loc_code,pdp_dept_code,pdt_doctype,gih_documentno,gid_ply_serialno,
+gih_inti_entryno,gih_year,GIS_SAILING_DATE,GIS_REGISTRATION_NO,GIS_ENGINE_NO,GIS_CHASSIS_NO,
+sum(coalesce(gis_suminsured,0)) gis_suminsured,
+sum(coalesce(gis_lossclaimed,0)) gis_lossclaimed,
+sum(coalesce(gis_lossassessed,0)) gis_lossassessed,
+sum(coalesce(gis_lossadjusted,0)) gis_lossadjusted,
+sum(coalesce(gis_surveyoramt,0)) gis_surveyoramt,
+sum(coalesce(gis_advocateamt,0)) gis_advocateamt, 
+sum(coalesce(GIS_EXCESSAMOUNT,0)) GIS_EXCESSAMOUNT, 
+sum(coalesce(GIS_SALVAGEAMT,0)) GIS_SALVAGEAMT, 
+sum(coalesce(GIS_FACULTAMOUNT,0)) GIS_FACULTAMOUNT, 
+sum(coalesce(GIS_FOREIGNFACULT_AMOUNT,0)) GIS_FOREIGNFACULT_AMOUNT , 
+sum(coalesce(GIS_CONETAMOUNT,0)) GIS_CONETAMOUNT, 
+sum(coalesce(GIS_TREATYAMOUNT,0)) GIS_TREATYAMOUNT 
+
+from GI_GC_IS_INTIMATIONSUBDTL 
+group by  
+por_org_code,plc_loc_code,pdp_dept_code,pdt_doctype,gih_documentno,gid_ply_serialno,gih_inti_entryno,gih_year,GIS_SAILING_DATE,GIS_REGISTRATION_NO,GIS_ENGINE_NO,GIS_CHASSIS_NO
+) 
+ISUBDTL 
+on 
+(  
+IDTL.POR_ORG_CODE         = ISUBDTL.POR_ORG_CODE     AND  
+IDTL.PLC_LOC_CODE         = ISUBDTL.PLC_LOC_CODE     AND  
+IDTL.PDP_DEPT_CODE        = ISUBDTL.PDP_DEPT_CODE    AND  
+IDTL.PDT_DOCTYPE          = ISUBDTL.PDT_DOCTYPE         AND  
+IDTL.GIH_DOCUMENTNO       = ISUBDTL.GIH_DOCUMENTNO   AND  
+IDTL.GIH_INTI_ENTRYNO     = ISUBDTL.GIH_INTI_ENTRYNO AND  
+IDTL.GIH_YEAR             = ISUBDTL.GIH_YEAR         AND  
+IDTL.GID_PLY_SERIALNO     = ISUBDTL.GID_PLY_SERIALNO  
+) left outer join 
+(select i.por_org_code,i.plc_loc_code,i.pdp_dept_code,i.pdt_doctype,i.gih_documentno,i.gih_inti_entryno,i.gih_year,
+sum(CASE coalesce(ISUBDTL1.GIS_LOSSADJUSTED, 0)  WHEN 0 THEN      CASE coalesce(ISUBDTL1.GIS_LOSSASSESSED, 0)  
+              WHEN 0 THEN  CASE coalesce(ISUBDTL1.GIS_LOSSCLAIMED, 0)  WHEN 0 THEN 0  ELSE coalesce(ISUBDTL1.GIS_LOSSCLAIMED, 0)  END  
+              ELSE coalesce (ISUBDTL1.GIS_LOSSASSESSED, 0)  END  
+ELSE coalesce(ISUBDTL1.gIS_LOSSADJUSTED, 0)  
+END * CASE  WHEN coalesce(I.GIH_NOCLAIM_TAG,'V') = 'N' THEN 0 ELSE 1 END+
+coalesce(ISUBDTL1.gis_surveyoramt,0) +coalesce(ISUBDTL1.gis_advocateamt,0)-coalesce(ISUBDTL1.GIS_SALVAGEAMT,0) ) as TLoss
+from 
+GI_GC_IH_INTIMATIONHD i
+left outer join 
+(
+select por_org_code,plc_loc_code,pdp_dept_code,pdt_doctype,gih_documentno,gid_ply_serialno,
+gih_inti_entryno,gih_year,
+sum(coalesce(gis_lossclaimed,0)) gis_lossclaimed,sum(coalesce(gis_lossassessed,0)) gis_lossassessed,
+sum(coalesce(gis_lossadjusted,0)) gis_lossadjusted,sum(coalesce(gis_surveyoramt,0)) gis_surveyoramt,
+sum(coalesce(gis_advocateamt,0)) gis_advocateamt, sum(coalesce(GIS_SALVAGEAMT,0)) GIS_SALVAGEAMT
+from GI_GC_IS_INTIMATIONSUBDTL 
+
+group by por_org_code,plc_loc_code,pdp_dept_code,pdt_doctype,gih_documentno,gid_ply_serialno,
+gih_inti_entryno,gih_year
+
+)ISUBDTL1 on   
+I.POR_ORG_CODE         = ISUBDTL1.POR_ORG_CODE     AND  
+I.PLC_LOC_CODE         = ISUBDTL1.PLC_LOC_CODE     AND  
+I.PDP_DEPT_CODE        = ISUBDTL1.PDP_DEPT_CODE    AND  
+I.PDT_DOCTYPE          = ISUBDTL1.PDT_DOCTYPE         AND  
+I.GIH_DOCUMENTNO       = ISUBDTL1.GIH_DOCUMENTNO   AND  
+I.GIH_INTI_ENTRYNO     = ISUBDTL1.GIH_INTI_ENTRYNO AND  
+I.GIH_YEAR             = ISUBDTL1.GIH_YEAR   
+group by 
+i.por_org_code,i.plc_loc_code,i.pdp_dept_code,i.pdt_doctype,i.gih_documentno,i.gih_inti_entryno,i.gih_year) X on 
+IH.POR_ORG_CODE         = X.POR_ORG_CODE     AND  
+IH.PLC_LOC_CODE         = X.PLC_LOC_CODE     AND  
+IH.PDP_DEPT_CODE        = X.PDP_DEPT_CODE    AND  
+IH.PDT_DOCTYPE          = X.PDT_DOCTYPE         AND  
+IH.GIH_DOCUMENTNO       = X.GIH_DOCUMENTNO   AND  
+IH.GIH_INTI_ENTRYNO     = X.GIH_INTI_ENTRYNO AND  
+IH.GIH_YEAR             = X.GIH_YEAR   
+
+inner join gi_gu_dh_doc_header h on (idtl.gid_basedocumentno=h.gdh_doc_reference_no and h.gdh_record_type='O')
+INNER JOIN CLAIM_PAID_TABLE B ON  (IH.GIH_DOC_REF_NO=B.CLMREF AND IH.GIH_INTI_ENTRYNO=B.INT_ENTRY_NO)
+
+INNER JOIN GI_GC_SH_SETTELMENTHD SH ON (sh.gsh_doc_ref_no=b.clmref and sh.gih_inti_entryno=b.int_entry_no and sh.gsh_entryno=b.sett_no)
+INNER JOIN PR_GN_PS_PARTY PP ON (IH.PPS_PARTY_CODE=PP.PPS_PARTY_CODE)
+INNER JOIN PR_GN_DP_DEPARTMENT DP ON (IH.PDP_DEPT_CODE=DP.PDP_DEPT_CODE AND IH.PLC_LOC_CODE=DP.PLC_LOC_CODE)
+INNER JOIN PR_GN_LC_LOCATION LC ON (IH.PLC_LOC_CODE=LC.PLC_LOC_CODE)
+left outer JOIN  PR_GC_OC_LOSS_CAUSE CL ON ( IH.PDP_DEPT_CODE=CL.PDP_DEPT_CODE AND   IH.POC_LOSSCODE=CL.POC_LOSSCODE )
+LEFT OUTER JOIN (SELECT PD.POR_ORG_CODE,PD.PLC_LOC_CODE ,PD.PDP_DEPT_CODE ,PD.PDT_DOCTYPE,   
+PD.GIH_DOCUMENTNO ,PD.GIH_YEAR,PD.GSH_ENTRYNO,
+Case WHEN PT.PYY_CODE in ('01001','01004') then '0002'
+WHEN PT.PYY_CODE in ('02001') then '0007'
+WHEN PT.PYY_CODE in ('04001','03001','03002','01006') then '0008'
+WHEN PT.PYY_CODE in ('01002','04003') then '0009'
+WHEN PT.PYY_CODE in ('01003','02002') then '0005' 
+WHEN PT.PYY_CODE in ('04001','04002','04003','04004','04005') then '0028' 
+else '0028' end payee_type,
+MAX(Case WHEN PT.PYY_CODE in ('01001','01004') then i.pps_desc
+WHEN PT.PYY_CODE in ('02001') then l.psr_surv_name
+WHEN PT.PYY_CODE in ('04001','03001','03002','01006') then m.PAV_ADVOCATE_NAME
+WHEN PT.PYY_CODE in ('01002','04003') then j.PWC_DESCRIPTION
+WHEN PT.PYY_CODE in ('01003','02002') then i.pps_desc
+WHEN PT.PYY_CODE in ('04001','04002','04003','04004','04005') then j.PWC_DESCRIPTION
+else j.PWC_DESCRIPTION end) payee_name,
+sum(PD.GPD_SALESTAX_AMOUNT)GSD_CO_SALESTAXAMOUNT,
+sum(pd.gpd_payee_amount*(CASE WHEN PD.GPD_PAYMENT_TYPE='04' THEN -1 ELSE 1 END))GSD_LOSSPAID1
+FROM GI_GC_PD_PAYMENT_DETAIL pd
+INNER JOIN PR_GC_YY_PAYMENT_TYPE PT ON (
+PT.PYY_CODE=PD.GPD_PAYEE_TYPE)  
+left outer join PR_GN_PS_PARTY  i  on (i.PPS_PARTY_CODE = PD.GPD_PAYEE_CODE_DESC)
+left outer join PR_GC_WS_WORKSHOP j on  (j.PWC_CODE = PD.GPD_PAYEE_CODE_DESC)
+left outer join PR_GC_DL_DEALER k on  (k.PDL_CODE = PD.GPD_PAYEE_CODE_DESC)
+left outer join PR_GG_SR_SURVEYOR l on  (l.PSR_SURV_CODE = PD.GPD_PAYEE_CODE_DESC)
+left outer join PR_GC_AV_ADVOCATE m on  (m.PAV_ADVOCATE_CODE =PD.GPD_PAYEE_CODE_DESC)
+group by PD.POR_ORG_CODE,PD.PLC_LOC_CODE ,PD.PDP_DEPT_CODE,PD.PDT_DOCTYPE,PD.GIH_DOCUMENTNO,
+PD.GIH_YEAR,PD.GSH_ENTRYNO, Case WHEN PT.PYY_CODE in ('01001','01004') then '0002'
+WHEN PT.PYY_CODE in ('02001') then '0007'
+WHEN PT.PYY_CODE in ('04001','03001','03002','01006') then '0008'
+WHEN PT.PYY_CODE in ('01002','04003') then '0009'
+WHEN PT.PYY_CODE in ('01003','02002') then '0005' 
+WHEN PT.PYY_CODE in ('04001','04002','04003','04004','04005') then '0028' 
+else '0028' end
+ 
+) STX ON (
+SH.POR_ORG_CODE=STX.POR_ORG_CODE and
+SH.PLC_LOC_CODE=STX.PLC_LOC_CODE and
+SH.PDP_DEPT_CODE =STX.PDP_DEPT_CODE and
+SH.PDT_DOCTYPE=STX.PDT_DOCTYPE and
+SH.GIH_DOCUMENTNO=STX.GIH_DOCUMENTNO and
+SH.GIH_YEAR=STX.GIH_YEAR and
+SH.GSH_ENTRYNO=STX.GSH_ENTRYNO and
+stx.payee_type=b.PSP_STYPCODE)
+left outer join GI_GC_UD_SURVEYORDTL svd on (
+IH.POR_ORG_CODE         = svd.POR_ORG_CODE     AND 
+IH.PLC_LOC_CODE          = svd.PLC_LOC_CODE     AND 
+IH.PDP_DEPT_CODE        = svd.PDP_DEPT_CODE    AND 
+IH.PDT_DOCTYPE            = svd.PDT_DOCTYPE      AND 
+IH.GIH_DOCUMENTNO     = svd.GIH_DOCUMENTNO   AND     
+IH.GIH_INTI_ENTRYNO    = svd.GIH_INTI_ENTRYNO AND 
+IH.GIH_YEAR                  = svd.GIH_YEAR and gud_serialno=1) 
+left outer join PR_GG_SR_SURVEYOR sv on (
+svd.psr_surv_code=sv.psr_surv_code)
+left outer join GI_GC_IC_INTIMATION_COINSURER IC ON
+(
+IDTL.POR_ORG_CODE         = IC.POR_ORG_CODE     AND  
+IDTL.PLC_LOC_CODE         = IC.PLC_LOC_CODE     AND  
+IDTL.PDP_DEPT_CODE        = IC.PDP_DEPT_CODE    AND  
+IDTL.PDT_DOCTYPE          = IC.PDT_DOCTYPE         AND  
+IDTL.GIH_DOCUMENTNO       = IC.GIH_DOCUMENTNO   AND  
+IDTL.GIH_INTI_ENTRYNO     = IC.GIH_INTI_ENTRYNO AND  
+IDTL.GIH_YEAR             = IC.GIH_YEAR         AND  
+IDTL.GID_BASEDOCUMENTNO = IC.GIC_BASEDOCUMENTNO  AND 
+IC.GIC_CORETAG='C' AND IC.GIC_LEADERTAG='Y' )
+          
+WHERE 
+--IH.PDP_DEPT_CODE BETWEEN  {?DEPFROM}   AND  {?DEPTO}    AND {?SLINE}={?SLINE} 
+--AND IH.PLC_LOC_CODE BETWEEN {?BRFROM} AND {?BRTO} AND 
+SH.GSH_SETTLEMENTDATE BETWEEN '01-jan-2000' AND '31-dec-2018' AND 
+b.vchdate  BETWEEN '01-jan-2018' AND '31-dec-2018' AND H.GDH_COMMDATE BETWEEN '01-jan-2000' AND '31-dec-2018' 
+AND IH.gih_INTIMATIONDATE BETWEEN '01-jan-2000' AND '31-dec-2018' 
+and ih.PPS_PARTY_CODE='1300019811'
+--and
+--ih.pps_party_code between case {?CLIENTFROM} WHEN 'All' then ih.pps_party_code else {?CLIENTFROM} end and case {?CLIENTTO} when 'All' then ih.pps_party_code else {?CLIENTTO} end 
+;

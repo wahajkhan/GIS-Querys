@@ -1,0 +1,130 @@
+
+-- COVERNOTE UTILIZED & UNUTILIZED
+
+SELECT SUM(NOCOVERNOTE)NC,SUM(POLICYCONV)PC FROM(
+SELECT (CASE WHEN POLICY='NO' THEN 1 ELSE 0 END ) NOCOVERNOTE, (CASE WHEN POLICY<>'NO' THEN 1 ELSE 0 END ) POLICYCONV   FROM(
+select DH.gdh_doc_reference_no covernote,coalesce(PDH.gdh_doc_reference_no, 'NO') POLICY , 
+dh.pdp_dept_code as dept,dh.plc_loc_code as location,lc.plc_locadesc as branchdesc,DP.PDP_DESC AS DEPTDESC,PDH.GDH_ISSUEDATE AS ISSUE_POLICY,
+PDH.GDH_TOTALSI AS SI_POLICY,PDH.GDH_GROSSPREMIUM AS GROSS_POLICY,PDH.GDH_NETPREMIUM AS NP_POLICY,
+ DH.gdh_issuedate,DH.gdh_commdate,DH.gdh_expirydate,(select pbc_desc from pr_gg_bc_business_class where pbc_busiclass_code= dh.pbc_busiclass_code) class,
+ (select pps_desc from pr_gn_ps_party where pps_party_code=dh.pps_party_code) insured, (select pps_desc from pr_gn_ps_party where pps_party_code=agdtl.pps_party_code) agency,
+agdtl.pps_party_code as agent_code,
+dh.pdo_devoffcode as dev_code,
+do.pdo_devoffdesc as devoff_desc,
+iy.piy_desc as insu_desc,pg.pps_desc as agent_desc,
+dh.piy_insutype,DH.gdh_totalsi,DH.gdh_grosspremium,DH.gdh_netpremium 
+from gi_gu_dh_doc_header dh 
+ left outer join gi_gu_dh_doc_header pdh ON 
+( pdh.GDH_BASEDOCUMENTNO=DH.GDH_DOC_REFERENCE_NO
+and PDH.Gdh_record_type='O' AND PDH.PDT_DOCTYPE='P'  AND PDH.GDH_CANCELLATION_TAG IS  NULL AND PDH.GDH_BASEDOC_TYPE='B' 
+and coalesce(pdh.gdh_posting_tag,'N')=case 'Y' when 'Y' then 'Y' when 'N' then 'N' else coalesce(pdh.gdh_posting_tag,'N') end 
+)
+left outer join 
+GI_GU_AD_AGENCYDTL AGDTL on
+(
+                    DH.POR_ORG_CODE              = AGDTL.POR_ORG_CODE        AND 
+                    DH.PLC_LOC_CODE              = AGDTL.PLC_LOC_cODE        AND 
+                    DH.PDP_DEPT_CODE             = AGDTL.PDP_DEPT_cODE       AND  
+                    DH.PBC_BUSICLASS_CODE        = AGDTL.PBC_BUSICLASS_CODE  AND 
+                    DH.PIY_INSUTYPE              = AGDTL.PIY_INSUTYPE        AND 
+                    DH.PDT_DOCTYPE               = AGDTL.PDT_DOCTYPE         AND  
+                    DH.GDH_DOCUMENTNO            = AGDTL.GDH_DOCUMENTNO      AND 
+                    DH.GDH_RECORD_TYPE           = AGDTL.GDH_RECORD_TYPE     AND 
+                    DH.GDH_YEAR                  = AGDTL.GDH_YEAR            
+)
+left outer join
+pr_gg_iy_insurancetype iy
+on
+(
+dh.piy_insutype=iy.piy_insutype
+) 
+left outer join
+pr_gn_ps_party pg
+on
+(
+agdtl.pps_party_code=pg.pps_party_code
+)
+left outer join
+pr_gg_do_devofficer do
+on
+(
+dh.pdo_devoffcode=do.pdo_devoffcode 
+)
+left outer join
+pr_gn_lc_location lc
+on
+(
+dh.plc_loc_code=lc.plc_loc_code
+)
+LEFT OUTER JOIN
+PR_GN_DP_DEPARTMENT DP
+ON
+(
+DH.PLC_LOC_CODE=DP.PLC_LOC_CODE AND
+DH.PDP_DEPT_CODE=DP.PDP_DEPT_CODE
+)
+left outer join
+(
+
+select ho.gdh_doc_reference_no as polno,ho.gdh_expirydate as pol_expiry,ho.Gdh_RECORD_TYPE,
+coalesce(ho.gdh_totalsi,0) pol_totalsi 
+
+
+from gi_gu_dh_doc_header ho 
+inner join
+gi_gu_dh_doc_header hc on (
+ho.POR_ORG_CODE          =  hc.POR_ORG_CODE 
+AND     ho.PLC_LOC_CODE      = hc.PLC_LOC_CODE 
+AND     ho.PDP_DEPT_CODE     =  hc.PDP_DEPT_CODE
+AND     ho.PBC_BUSICLASS_CODE   = hc.PBC_BUSICLASS_CODE 
+AND     ho.PIY_INSUTYPE         =  hc.PIY_INSUTYPE
+AND     ho.PDT_DOCTYPE          =  hc.PDT_DOCTYPE 
+AND     ho.Gdh_DOCUMENTNO      =  hc.Gdh_DOCUMENTNO
+AND     hc.Gdh_RECORD_TYPE='C'
+AND     ho.Gdh_YEAR             =  hc.Gdh_YEAR)
+where ho.pdt_doctype ='T' and ho.Gdh_RECORD_TYPE='C'
+) N
+on
+(
+dh.gdh_doc_reference_no=n.polno )
+
+
+where dh.pdt_doctype='T' AND dh.gdh_record_type=case when coalesce(N.gdh_record_type,'O') ='C'  then 'C' else 'O' end  AND 'Y'='Y'
+--and DH.PLC_LOC_CODE between {?BRANCHFROM} and {?BRANCHTO} 
+--and DH.PDP_DEPT_CODE between {?DEPARTMENTFROM} and {?DEPARTMENTTO} 
+
+--and CASE {?EXPIREDBASIS} WHEN 'Y' 
+--    THEN dh.GDH_RENEWALDATE  ELSE 
+--    CASE {?DATEFILTER} WHEN 'C' THEN DH.gdh_commdate WHEN 'P' THEN DH.gdh_ISSUEDATE ELSE DH.gdh_commdate END
+AND DH.gdh_commdate between '01-jan-2018' and '31-DEC-2018' 
+--and COALESCE(AGDTL.PPS_PARTY_CODE,'N') between CASE {?AgentFrom} WHEN 'All' then COALESCE(AGDTL.PPS_PARTY_CODE,'N') else {?AgentFrom} end and case {?AgentTo} when 'All' then COALESCE(AGDTL.PPS_PARTY_CODE,'N') else {?AgentTo} end 
+--AND DH.PPS_PARTY_CODE BETWEEN CASE {?CLIENTFROM} when 'All' then  DH.PPS_PARTY_CODE else {?CLIENTFROM} end and case {?CLIENTTO} when 'All' then  DH.PPS_PARTY_CODE  else {?CLIENTTO} end
+and COALESCE(DH.GDH_CANCELLATION_TAG,'N') <> 'Y' 
+and coalesce(dh.gdh_posting_tag,'N')='Y' 
+
+
+AND NOT EXISTS
+(
+SELECT     GEL_BASEDOCUMENTNO 
+FROM         GI_GU_EL_ENDORSE_LOGBOOKHD EL INNER JOIN gi_gu_dh_doc_header EDH ON
+(
+                    EDH.POR_ORG_CODE              = EL.POR_ORG_CODE        AND 
+                    EDH.PLC_LOC_CODE              = EL.PLC_LOC_cODE        AND 
+                    EDH.PDP_DEPT_CODE             = EL.PDP_DEPT_cODE       AND  
+                    EDH.PBC_BUSICLASS_CODE        = EL.PBC_BUSICLASS_CODE  AND 
+                    EDH.PIY_INSUTYPE              = EL.PIY_INSUTYPE        AND 
+                    EDH.PDT_DOCTYPE               = EL.PDT_DOCTYPE         AND  
+                    EDH.GDH_DOCUMENTNO            = EL.GDH_DOCUMENTNO      AND 
+                    EDH.GDH_RECORD_TYPE           = EL.GDH_RECORD_TYPE     AND 
+                    EDH.GDH_YEAR                  = EL.GDH_YEAR            
+)
+WHERE 
+    PED_ENDOTYPE IN ('DC') AND 
+GEL_BASEDOCUMENTNO = dh.Gdh_DOC_REFERENCE_NO AND EDH.GDH_CANCELLATION_TAG IS NULL 
+and coalesce(edh.gdh_posting_tag,'N')=case 'Y' when 'Y' then 'Y' when 'N' then 'N' else coalesce(edh.gdh_posting_tag,'N') end 
+)
+order by dh.gdh_doc_reference_no)
+--WHERE POLICY='NO'
+)
+
+;

@@ -1,0 +1,99 @@
+
+--30/01/2019
+--Loss Ratio Query Client wise
+Select s.ClientCode,PPS_DESC Client,CLIENTGROUP,
+Sum(PF2013),Sum(pm2013),Sum(pa2013),Sum(cf2013),sum(cm2013),Sum(ca2013),
+Sum(PF2014),Sum(pm2014),Sum(pa2014),Sum(cf2014),sum(cm2014),Sum(ca2014),
+Sum(PF2015),Sum(pm2015),Sum(pa2015),Sum(cf2015),sum(cm2015),Sum(ca2015),
+Sum(PF2016),Sum(pm2016),Sum(pa2016),Sum(cf2016),sum(cm2016),Sum(ca2016),
+Sum(PF2017),Sum(pm2017),Sum(pa2017),Sum(cf2017),sum(cm2017),Sum(ca2017),
+Sum(PF2018),Sum(pm2018),Sum(pa2018),Sum(cf2018),sum(cm2018),Sum(ca2018)
+from(
+Select c.CLIENTCODE, c.CLIENTNAME, c.DEPT, c.SMODE, c.SYEAR,
+Sum(PF2013)PF2013,Sum(pm2013)pm2013,Sum(pa2013)pa2013,coalesce(Sum(cf2013)-Sum(cof2012),0)cf2013,coalesce(sum(cm2013)-sum(com2012),0)cm2013,coalesce(Sum(ca2013)-Sum(coa2012),0)ca2013,
+Sum(PF2014)PF2014,Sum(pm2014)pm2014,Sum(pa2014)pa2014,coalesce(Sum(cf2014)-Sum(cof2013),0)cf2014,coalesce(sum(cm2014)-sum(com2013),0)cm2014,coalesce(Sum(ca2014)-Sum(coa2013),0)ca2014,
+Sum(PF2015)PF2015,Sum(pm2015)pm2015,Sum(pa2015)pa2015,coalesce(Sum(cf2015)-Sum(cof2014),0)cf2015,coalesce(sum(cm2015)-sum(com2014),0)cm2015,coalesce(Sum(ca2015)-Sum(coa2014),0)ca2015,
+Sum(PF2016)PF2016,Sum(pm2016)pm2016,Sum(pa2016)pa2016,coalesce(Sum(cf2016)-Sum(cof2015),0)cf2016,coalesce(sum(cm2016)-sum(com2015),0)cm2016,coalesce(Sum(ca2016)-Sum(coa2015),0)ca2016,
+Sum(PF2017)PF2017,Sum(pm2017)pm2017,Sum(pa2017)pa2017,coalesce(Sum(cf2017)-Sum(cof2016),0)cf2017,coalesce(sum(cm2017)-sum(com2016),0)cm2017,coalesce(Sum(ca2017)-Sum(coa2016),0)ca2017,
+Sum(PF2018)PF2018,Sum(pm2018)pm2018,Sum(pa2018)pa2018,coalesce(Sum(cf2018)-Sum(cof2017),0)cf2018,coalesce(sum(cm2018)-sum(com2017),0)cm2018,coalesce(Sum(ca2018)-Sum(coa2017),0)ca2018
+from( 
+Select H.CLIENTCODE, H.CLIENTNAME, H.DEPT, H.SMODE, H.SYEAR,
+(case when syear='2013' and dept='Fire' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pF2013,
+(case when syear='2014' and dept='Fire' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pF2014,
+(case when syear='2015' and dept='Fire' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pF2015,
+(case when syear='2016' and dept='Fire' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pF2016,
+(case when syear='2017' and dept='Fire' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pF2017,
+(case when syear='2018' and dept='Fire' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pF2018,
+(case when syear='2013' and dept='Marine' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pm2013,
+(case when syear='2014' and dept='Marine' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pm2014,
+(case when syear='2015' and dept='Marine' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pm2015,
+(case when syear='2016' and dept='Marine' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pm2016,
+(case when syear='2017' and dept='Marine' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pm2017,
+(case when syear='2018' and dept='Marine' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pm2018,
+(case when syear='2013' and dept='Accident' and upper(SMode) like 'PREMIUM' then  coalesce(sum(grossamt),0) else 0 end) pa2013,
+(case when syear='2014' and dept='Accident' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pa2014,
+(case when syear='2015' and dept='Accident' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pA2015,
+(case when syear='2016' and dept='Accident' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pa2016,
+(case when syear='2017' and dept='Accident' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pA2017,
+(case when syear='2018' and dept='Accident' and upper(SMode) like 'PREMIUM' then coalesce(sum(grossamt),0) else 0 end) pA2018,
+(case when syear='2013' and dept='Fire' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)CF2013,
+(case when syear='2014' and dept='Fire' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)CF2014,
+(case when syear='2015' and dept='Fire' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)CF2015,
+(case when syear='2016' and dept='Fire' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)CF2016,
+(case when syear='2017' and dept='Fire' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)CF2017,
+(case when syear='2018' and dept='Fire' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)CF2018,
+(case when syear='2013' and dept='Marine' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)Cm2013,
+(case when syear='2014' and dept='Marine' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)Cm2014,
+(case when syear='2015' and dept='Marine' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)Cm2015,
+(case when syear='2016' and dept='Marine' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)Cm2016,
+(case when syear='2017' and dept='Marine' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)Cm2017,
+(case when syear='2018' and dept='Marine' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)Cm2018,
+(case when syear='2013' and dept='Accident' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)Ca2013,
+(case when syear='2014' and dept='Accident' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)Ca2014,
+(case when syear='2015' and dept='Accident' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)Ca2015,
+(case when syear='2016' and dept='Accident' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)Ca2016,
+(case when syear='2017' and dept='Accident' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)Ca2017,
+(case when syear='2018' and dept='Accident' and UPPER(SMode) like 'CLAIMS%' then coalesce(sum(grossamt),0) else 0 end)Ca2018,
+(case when syear='2013' and dept='Fire' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)CoF2013,
+(case when syear='2014' and dept='Fire' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)CoF2014,
+(case when syear='2015' and dept='Fire' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)CoF2015,
+(case when syear='2016' and dept='Fire' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)CoF2016,
+(case when syear='2017' and dept='Fire' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)CoF2017,
+(case when syear='2012' and dept='Fire' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)CoF2012,
+(case when syear='2013' and dept='Marine' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)Com2013,
+(case when syear='2014' and dept='Marine' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)Com2014,
+(case when syear='2015' and dept='Marine' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)Com2015,
+(case when syear='2016' and dept='Marine' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)Com2016,
+(case when syear='2017' and dept='Marine' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)Com2017,
+(case when syear='2012' and dept='Marine' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)Com2012,
+(case when syear='2013' and dept='Accident' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)Coa2013,
+(case when syear='2014' and dept='Accident' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)Coa2014,
+(case when syear='2015' and dept='Accident' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)Coa2015,
+(case when syear='2016' and dept='Accident' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)Coa2016,
+(case when syear='2017' and dept='Accident' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)Coa2017,
+(case when syear='2012' and dept='Accident' and UPPER(SMode) like 'CLAIMS O/S%' then coalesce(sum(grossamt),0) else 0 end)Coa2012
+FROM 
+(select H.CLIENTCODE, H.CLIENTNAME, H.DEPT, H.SMODE smode, H.SYEAR,coalesce(sum(grossamt),0) grossamt 
+FROM HIL.HICL_STATS H Where SYEAR in ('2018','2017','2016','2015','2014','2013','2012')
+ group by H.CLIENTCODE, H.CLIENTNAME, H.DEPT, H.SMODE, H.SYEAR )H
+--where CLIENTNAME LIKE 'Fauji Ce%'
+ group by H.CLIENTCODE, H.CLIENTNAME, H.DEPT, H.SMODE, H.SYEAR  )c
+ group by c.CLIENTCODE, c.CLIENTNAME, c.DEPT, c.SMODE, c.SYEAR )s
+LEFT OUTER JOIN PR_GN_PS_PARTY p ON (p.PPS_PARTY_CODE=s.CLIENTCODE) 
+LEFT OUTER JOIN HICL_GROUPMAPPING G ON (G.CLIENTCODE=s.CLIENTCODE)
+where 
+Case {?STYPE}  
+when 'G' then  upper(clientgroup)   when 'C' then  upper(S.CLIENTNAME)   else S.CLIENTCODE end
+LIKE
+Case {?STYPE}  
+when 'G' then  upper({?GRP})||'%'  when 'C' then  upper({?GRP})||'%'  else {?GRP} end
+
+
+--upper(clientgroup) like upper('Engro')||'%'
+--AND S.CLIENTNAME='G'
+--where clientgroup='Metco Group'
+--s.CLIENTCODE IN ( '1300007600')
+-- AND S.CLIENTNAME LIKE 'Panther Tyres Limited%'
+ 
+ group by s.ClientCode,PPS_DESC,CLIENTGROUP
+ order by s.ClientCode,PPS_DESC,CLIENTGROUP
